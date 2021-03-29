@@ -3,6 +3,7 @@ const fs = require('fs-extra')
 const hash = require('hash-sum')
 const { parse, compileTemplate, compileStyle } = require('@vue/component-compiler-utils')
 const compiler = require('vue-template-compiler')
+const consola = require('consola')
 // const componentNormalizer = require('vue-loader/lib/runtime/componentNormalizer')
 const EXPORT = 'export default {'
 const RENDER = 'export function render'
@@ -25,7 +26,7 @@ async function doParse (file, name) {
 
   if (descriptor.errors && descriptor.errors.length) {
     // message, loc: { start: line, column, offset }
-    console.log(`\n  [error]: ${descriptor.errors[0]}\n  ${file}\n`)
+    consola.error(`\n  [error]: ${descriptor.errors[0]}\n  ${file}\n`)
     process.exit(0)
   }
 

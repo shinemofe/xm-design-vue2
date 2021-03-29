@@ -2,6 +2,8 @@ const fs = require('fs-extra')
 const path = require('path')
 const src = path.resolve(__dirname, '../src')
 const inquirer = require('inquirer')
+const consola = require('consola')
+const chalk = require('chalk')
 
 // 选择组件类型 jsx 或 sfc
 // 组件名称
@@ -70,6 +72,11 @@ const jsxLess = `.%name% {
 
 async function inject () {
   const { type, name, desc } = await getConfig()
+
+  if (!/^[a-z\-]+$/.test(name)) {
+    return consola.error(`组件名称 ${chalk.red(name)} 不合法，正确示例：${chalk.green('xm-toast')}`)
+  }
+
   if (type === 'sfc') {
     await fs.outputFile(path.join(src, name, 'index.vue'), sfcTpl.replace(/%name%/g, name))
   } else {
@@ -77,6 +84,7 @@ async function inject () {
     await fs.outputFile(path.join(src, name, 'index.less'), jsxLess.replace(/%name%/g, name))
   }
   await fs.outputFile(path.join(src, name, 'README.md'), `# ${name}`)
+  consola.success(`组件 ${chalk.yellow(name)} 创建成功`)
 }
 
 inject()

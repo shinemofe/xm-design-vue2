@@ -33,7 +33,7 @@ module.exports = async function compile (filePath, name, code) {
   if (isEntryLess) {
     // 处理入口 less
     options.modifyVars = {
-      hack: `true; @import "${path.resolve(__dirname, '../xmi.theme.vant.less')}";`
+      hack: `true; @import "${path.resolve(__dirname, '../xmi.theme.less')}";`
     }
   }
 

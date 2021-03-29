@@ -3,6 +3,7 @@ const compileSfc = require('./compile-sfc')
 const compileLess = require('./compile-less')
 const path = require('path')
 const fs = require('fs-extra')
+const consola = require('consola')
 
 async function compileDir (dir, relativePath, lessCollector) {
   const res = await fs.readdir(dir)
@@ -26,7 +27,7 @@ async function compileDir (dir, relativePath, lessCollector) {
 }
 
 module.exports = components => {
-  console.log('  🔧 处理 sfc/jsx...')
+  consola.info('  🔧 处理 sfc/jsx...')
   return Promise.all(components.map(async ({ dir, name }) => {
     const less = []
     const style = path.join(dir, 'index.less')
@@ -38,6 +39,6 @@ module.exports = components => {
       await compileLess(`${name}.less`, name, less.join('\n'))
     }
   })).then(() => {
-    console.log('  sfc/jsx 处理完成')
+    consola.success('  sfc/jsx 处理完成')
   })
 }

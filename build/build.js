@@ -1,6 +1,7 @@
 const { getComponents, getFixed } = require('./utils')
 const buildComponent = require('./build-component')
 const genStyle = require('./gen-style')
+const consola = require('consola')
 
 const components = getComponents()
 const args = process.argv
@@ -13,7 +14,7 @@ if (dirs.length) {
     if (item) {
       processComponents.push(item)
     } else {
-      console.log(`组件 ${dir} 不存在！`)
+      consola.error(`组件 ${dir} 不存在！`)
     }
   })
 } else {
@@ -21,10 +22,10 @@ if (dirs.length) {
 }
 
 if (processComponents.length) {
-  console.log(`共 ${processComponents.length} 个组件待处理`)
+  consola.info(`共 ${processComponents.length} 个组件待处理`)
   const jsArr = getFixed().concat(processComponents)
 
   buildComponent(jsArr).then(() => genStyle(processComponents)).then(() => {
-    console.log('全部完成\n')
+    consola.success('全部完成')
   })
 }
