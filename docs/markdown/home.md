@@ -20,14 +20,15 @@
 方式：点击右上角 GIT 地址提 pr。
 
 ```
-npm run create component-name
+npm run create
 ```
 
-会新建 `src/component-name`，同时将组件注入到 `doc.config.js` 左侧菜单中 。
-
-
-打包该组件：
+会新建 `src/component-name`，打包该组件：
 
 ```
 npm run build component-name
 ```
+
+配置左侧菜单
+
+在文件 `doc.config.js` catelogs 中配置。

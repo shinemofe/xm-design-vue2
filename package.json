@@ -7,7 +7,8 @@
     "docs:build": "vue-cli-service build",
     "build": "node build/build.js",
     "lint": "vue-cli-service lint",
-    "release": "npm run build && node build/gen-entry.js && node build/build-entry.js"
+    "release": "npm run build && node build/gen-entry.js && node build/build-entry.js",
+    "create": "node build/create-one.js"
   },
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -51,6 +52,7 @@
     "eslint-plugin-vue": "^7.0.0-0",
     "fs-extra": "^9.0.1",
     "hash-sum": "^2.0.0",
+    "inquirer": "^8.0.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
     "postcss": "^8.1.1",
