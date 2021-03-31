@@ -4,7 +4,6 @@ import router from './router'
 import './vant.copy.css'
 import { tconModules } from '../doc.config'
 import '../src/style/index.less'
-import '../var/out-var.css'
 
 tconModules.forEach(x => {
   require(`tcon/dist/${x}.css`)

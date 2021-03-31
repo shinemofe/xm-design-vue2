@@ -77,7 +77,7 @@
       </template>
       <iframe
         ref="iframe"
-        src="/demo.html#/"
+        src="./demo.html#/"
         class="height-100"
         frameborder="0"
         @load="doRouterSync"
