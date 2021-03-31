@@ -104,16 +104,8 @@ export default {
   },
 
   data () {
-    // const iframe = null
     const scrollFixed = false
-    // const vantPreviewUrl = computed(() => )
-
-    // onMounted(() => {
-    //
-    // })
-
     // 通知 demo 路由到同样的路由
-
     return {
       catelogs,
       scrollFixed,
