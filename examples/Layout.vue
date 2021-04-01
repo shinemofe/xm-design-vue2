@@ -49,9 +49,9 @@ export default {
 
   methods: {
     handleBack () {
-      router.push('/')
+      this.$router.back()
       // 通知 docs 也返回
-      window.top.docsRouter && window.top.docsRouter.push('/home')
+      window.top.docsRouter && window.top.docsRouter.back()
     }
   }
 }

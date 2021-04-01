@@ -13,7 +13,7 @@ tconModules.forEach(x => {
 })
 
 // 变量预览时覆盖
-const isParentPreview = /preview/.test(window.top.location.search)
+const isParentPreview = window.top && /preview/.test(window.top.location.search)
 const css = localStorage.getItem('xm-design-vue2-theme')
 if (css) {
   const insert = () => {
@@ -21,7 +21,9 @@ if (css) {
     style.innerHTML = css
     style.setAttribute('type', 'text/css')
     document.head.appendChild(style)
-    window.top.document.head.appendChild(style.cloneNode(true))
+    if (window.top) {
+      window.top.document.head.appendChild(style.cloneNode(true))
+    }
   }
   if (isParentPreview) {
     insert()

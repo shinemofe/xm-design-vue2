@@ -13,6 +13,7 @@ const routes = [
 catelogs.forEach(it => {
   it.items.forEach(cate => {
     routes.push({
+      name: cate.path,
       path: '/' + cate.path,
       component: cate.md
         ? () => import(`@/markdown/${cate.path}.md`)
@@ -23,7 +24,14 @@ catelogs.forEach(it => {
 
 const router = new Router({
   history: 'hash',
-  routes
+  routes,
+  scrollBehavior (to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      }
+    }
+  }
 })
 
 export default router

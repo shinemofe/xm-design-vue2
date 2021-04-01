@@ -3,7 +3,7 @@
     <div class="van-doc-header">
       <div class="van-doc-row">
         <div class="van-doc-header__top">
-          <a class="van-doc-header__logo">
+          <a class="van-doc-header__logo" @click="$router.push('/home')">
             <img :src="info.logo">
             <span>{{ info.title }}</span>
           </a>

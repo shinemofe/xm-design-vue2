@@ -16,7 +16,7 @@
           v-for="(item, j) in group.items"
           :key="j"
           class="demo-home-nav__block"
-          :href="`#/${item.path}`"
+          href="javascript:;"
           @click="handleTo(item)"
         >
           <span>{{ item.title }}</span>
@@ -34,11 +34,15 @@ export default {
   data () {
     return {
       list: catelogs.slice(1),
-      info,
-      handleTo (item) {
-        // 通知 docs 也跳转
-        window.top.docsRouter && window.top.docsRouter.push(`/${item.path}`)
-      }
+      info
+    }
+  },
+
+  methods: {
+    handleTo (item) {
+      this.$router.push({ name: item.path }).catch(err => {})
+      // 通知 docs 也跳转
+      window.top.docsRouter && window.top.docsRouter.push({ name: item.path })
     }
   }
 }
