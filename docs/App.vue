@@ -3,7 +3,7 @@
     <div class="van-doc-header">
       <div class="van-doc-row">
         <div class="van-doc-header__top">
-          <a class="van-doc-header__logo" @click="$router.push('/home')">
+          <a class="van-doc-header__logo" @click="handleIndex()">
             <img :src="info.logo">
             <span>{{ info.title }}</span>
           </a>
@@ -124,6 +124,10 @@ export default {
   },
 
   methods: {
+    handleIndex () {
+      location.href = 'index.html#/home'
+    },
+
     handleBack () {
       const { demoRouter } = this.$refs.iframe.contentWindow
       if (demoRouter) {
