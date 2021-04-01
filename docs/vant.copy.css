@@ -180,10 +180,10 @@ pre + p {
   -webkit-transition: color 0.2s;
   transition: color 0.2s;
 }
-.van-doc-nav__item a:hover,
-.van-doc-nav__item a.active {
-  color: #4fc08d;
-}
+/*.van-doc-nav__item a:hover,*/
+/*.van-doc-nav__item a.active {*/
+/*  color: #4fc08d;*/
+/*}*/
 .van-doc-nav__item a.active {
   -webkit-font-smoothing: auto;
 }
@@ -201,7 +201,7 @@ pre + p {
 
 .van-doc-header {
   width: 100%;
-  background-color: #001938;
+  /*background-color: #001938;*/
   -webkit-user-select: none;
   user-select: none;
 }
@@ -265,31 +265,31 @@ pre + p {
   transform: rotate(-45deg);
   content: '';
 }
-.van-doc-header__version-pop {
-  position: absolute;
-  top: 30px;
-  right: 0;
-  left: 0;
-  z-index: 99;
-  color: #333;
-  line-height: 36px;
-  text-align: left;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px #ebedf0;
-  -webkit-transform-origin: top;
-  transform-origin: top;
-  -webkit-transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-  transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
-}
-.van-doc-header__version-pop-item {
-  padding-left: 12px;
-  -webkit-transition: 0.2s;
-  transition: 0.2s;
-}
-.van-doc-header__version-pop-item:hover {
-  color: #1989fa;
-}
+/*.van-doc-header__version-pop {*/
+/*  position: absolute;*/
+/*  top: 30px;*/
+/*  right: 0;*/
+/*  left: 0;*/
+/*  z-index: 99;*/
+/*  color: #333;*/
+/*  line-height: 36px;*/
+/*  text-align: left;*/
+/*  background-color: #fff;*/
+/*  border-radius: 12px;*/
+/*  box-shadow: 0 4px 12px #ebedf0;*/
+/*  -webkit-transform-origin: top;*/
+/*  transform-origin: top;*/
+/*  -webkit-transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);*/
+/*  transition: 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);*/
+/*}*/
+/*.van-doc-header__version-pop-item {*/
+/*  padding-left: 12px;*/
+/*  -webkit-transition: 0.2s;*/
+/*  transition: 0.2s;*/
+/*}*/
+/*.van-doc-header__version-pop-item:hover {*/
+/*  color: #1989fa;*/
+/*}*/
 .van-doc-header__logo {
   display: block;
 }
@@ -303,7 +303,6 @@ pre + p {
   margin-right: 10px;
 }
 .van-doc-header__logo span {
-  color: #fff;
   font-size: 22px;
 }
 .van-doc-header__logo-link img {
@@ -410,7 +409,7 @@ pre + p {
 .van-doc-content h4,
 .van-doc-content h5,
 .van-doc-content h6 {
-  color: #323233;
+  color: var(--color-gray-6);
   font-weight: normal;
   line-height: 1.5;
 }

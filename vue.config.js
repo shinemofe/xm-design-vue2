@@ -18,6 +18,10 @@ module.exports = {
     }
   },
 
+  devServer: {
+    disableHostCheck: true
+  },
+
   css: {
     loaderOptions: {
       less: {

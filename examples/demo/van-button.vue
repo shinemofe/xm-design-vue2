@@ -2,8 +2,10 @@
   <layout title="Button">
     <p class="c-999 mb10">默认按钮</p>
     <div class="demo__button">
-      <van-button>定制按钮</van-button>
-      <van-button type="primary">定制按钮</van-button>
+      <van-button>默认</van-button>
+      <van-button type="primary" @click="toast">主要</van-button>
+      <van-button type="warning" @click="toast">提示</van-button>
+      <van-button type="danger" @click="toast">警示</van-button>
     </div>
     <p class="c-999 mtb10">小按钮</p>
     <div class="demo__button">
@@ -21,12 +23,20 @@
 <script>
 import Layout from '../Layout'
 import VanButton from 'vant/es/button'
+import VanToast from 'vant/es/toast'
 import 'vant/es/button/index.less'
+import 'vant/es/toast/index.less'
 
 export default {
   components: {
     Layout,
     VanButton
+  },
+
+  methods: {
+    toast () {
+      VanToast('666')
+    }
   }
 }
 </script>

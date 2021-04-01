@@ -159,5 +159,14 @@ export default {
 
 <style lang="less">
 .xmi-doc {
+  .van-doc-header {
+    background-color: e('var(--color-solid-black)');
+    &__logo span {
+      color: e('var(--color-white)');
+    }
+  }
+  .van-doc-nav__item a:hover, .van-doc-nav__item a.active {
+    color: e('var(--color-function-link)');
+  }
 }
 </style>
