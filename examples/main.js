@@ -23,7 +23,9 @@ if (css) {
     document.head.appendChild(style)
     window.top.document.head.appendChild(style.cloneNode())
   }
-  if (!isParentPreview) {
+  if (isParentPreview) {
+    insert()
+  } else {
     Dialog.confirm({ message: '本地主题存在，是否加载本地主题样式' }).then(() => {
       insert()
     }).catch(() => {
