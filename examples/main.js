@@ -21,7 +21,7 @@ if (css) {
     style.innerHTML = css
     style.setAttribute('type', 'text/css')
     document.head.appendChild(style)
-    window.top.document.head.appendChild(style.cloneNode())
+    window.top.document.head.appendChild(style.cloneNode(true))
   }
   if (isParentPreview) {
     insert()
