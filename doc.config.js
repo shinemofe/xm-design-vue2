@@ -1,6 +1,6 @@
 module.exports = {
   info: {
-    title: 'Xmmp',
+    title: 'Xm Design',
     desc: 'Vue2 组件库',
     logo: 'https://user-images.githubusercontent.com/9743418/104887549-680c1e80-59a6-11eb-8222-40e1d38a0fe2.png'
   },

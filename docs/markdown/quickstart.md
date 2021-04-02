@@ -3,11 +3,7 @@
 ### 安装
 
 ```
-# yarn
-yarn add xmmp
-
-# npm
-npm i xmmp -S
+xnpm i @xm/design-vue -S
 ```
 
 请注意
