@@ -3,17 +3,19 @@
 ### 使用 
 
 ```js
-import { createApp } from 'vue'
-import { Tab, Tabs } from 'vant'
+import { VanTabs } from '@xm/design-vue'
 
-const app = createApp()
-app.use(Tab)
-app.use(Tabs)
+Vue.use(VanTabs)
 ```
+
+注意，这里不需要引入 VanTab
+
 
 ## 示例
 
 ### 默认用法
+
+引入组件后，可以搭配 VanTab 使用，而不需要手动引入 VanTab。
 
 ```html
 <van-tabs v-model:active="active">

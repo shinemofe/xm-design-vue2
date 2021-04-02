@@ -9,19 +9,24 @@ const es = path.resolve(__dirname, '../es')
 const jsPath = path.join(es, 'index.js')
 const lessPath = path.join(es, 'index.less')
 
-const js = `import Vant from 'vant/es/index.js'
-${components.map(({ name }) => `import ${nameToCamel(name)} from './${name}'`).join('\n')}
+const js = `${components.map(({ name }) => `import ${nameToCamel(name)} from './${name}'`).join('\n')}
 
-const componentArr = [${components.map(({ name }) => `${nameToCamel(name)}`).join(', ')}]
+function install (app) {
+  const componentArr = [${components.map(({ name }) => `${nameToCamel(name)}`).join(', ')}]
 
+  componentArr.forEach(com => {
+    app.component(com.name, com)
+  })
+}
+
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue);
+}
+
+export { ${components.map(({ name }) => `${nameToCamel(name)}`).join(', ')} }
 export default {
   version: '${version}',
-  install: function (app, options) {
-    app.use(Vant)
-    componentArr.forEach(com => {
-      app.component(com.name, com)
-    })
-  }
+  install
 }
 `
 
@@ -37,8 +42,7 @@ const css = components.map(({ name, style, style2 }) => {
 Array.prototype.unshift.apply(
   css,
   [
-    '@import "~vant/lib/index.less";',
-    '@import "../src/style/index.less";'
+    '@import "../xmi.theme.less";'
   ].concat(tconModules.map(x => `@import "~tcon/dist/${x}.css";`))
 )
 

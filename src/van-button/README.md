@@ -3,7 +3,9 @@
 ### 使用
 
 ```js
-import { Button } from 'vant'
+import { VanButton } from '@xm/design-vue'
+
+Vue.use(VanButton)
 ```
 
 ## 示例
@@ -13,4 +15,5 @@ import { Button } from 'vant'
 ```html
 <van-button>定制按钮</van-button>
 <van-button type="primary">定制按钮</van-button>
+<van-button type="primary" loading>loading</van-button>
 ```

@@ -2,8 +2,19 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import './vant.copy.css'
-import { tconModules } from '../doc.config'
-import '../src/style/index.less'
+import { tconModules, catelogs } from '../doc.config'
+import 'tcon/dist/reset.css'
+
+// 全量引入组件
+catelogs.forEach(it => {
+  it.items.filter(x => !x.md).forEach(com => {
+    if (com.vant) {
+      require(`../src/${com.path}/index.less`)
+    }
+    Vue.component(com.path, () => import(`../src/${com.path}/index`))
+  })
+})
+
 import Dialog from 'vant/es/dialog'
 import 'vant/es/dialog/index.less'
 import 'vant/es/overlay/index.less'

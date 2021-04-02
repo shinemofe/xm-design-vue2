@@ -4,7 +4,7 @@ const hash = require('hash-sum')
 const { parse, compileTemplate, compileStyle } = require('@vue/component-compiler-utils')
 const compiler = require('vue-template-compiler')
 const consola = require('consola')
-// const componentNormalizer = require('vue-loader/lib/runtime/componentNormalizer')
+const EXPORT_WRAP = /(export default[\s\S]+?\{)/
 const EXPORT = 'export default {'
 const RENDER = 'export function render'
 const VUE_RENDER = '__vue_render'
@@ -41,12 +41,15 @@ async function doParse (file, name) {
   const render = template.code.replace('var render', `var ${VUE_RENDER}`)
     .replace('var staticRenderFns', `var ${STATIC_RENDER_FN}`)
 
-  let script = `${render.replace(RENDER, `function ${VUE_RENDER}`)}\n${EXPORT}\n  _compiled: true, \n  staticRenderFns: ${STATIC_RENDER_FN},\n  render: ${VUE_RENDER},`
+  let EXPORT_PREFIX = trim(descriptor.script.content).match(EXPORT_WRAP)
+  EXPORT_PREFIX = EXPORT_PREFIX ? EXPORT_PREFIX[0] : EXPORT
+
+  let script = `${render.replace(RENDER, `function ${VUE_RENDER}`)}\n${EXPORT_PREFIX}\n  _compiled: true, \n  staticRenderFns: ${STATIC_RENDER_FN},\n  render: ${VUE_RENDER},`
   if (hasScoped) {
-    script = script.replace(EXPORT, `${EXPORT}\n  _scopeId: ${scopedId ? `'${scopedId}'` : undefined},`)
+    script = script.replace(EXPORT_PREFIX, `${EXPORT_PREFIX}\n  _scopeId: ${scopedId ? `'${scopedId}'` : undefined},`)
   }
 
-  script = trim(descriptor.script.content).replace(EXPORT, script)
+  script = trim(descriptor.script.content).replace(EXPORT_PREFIX, script)
 
   const less = scopedId ? descriptor.styles.map(x => {
     return compileStyle({

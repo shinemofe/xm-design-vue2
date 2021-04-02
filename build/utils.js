@@ -10,14 +10,15 @@ const utils = {
     const components = []
     catelogs.forEach(group => {
       group.items.forEach(item => {
-        if (!item.md && !item.vant) {
+        if (!item.md) {
           const dir = path.join(pkgs, item.path)
           components.push({
             dir,
             file: path.join(dir, 'index.jsx'),
             style: path.join(dir, 'index.less'),
             style2: path.join(es, item.path, 'index.css'),
-            name: item.path
+            name: item.path,
+            vant: item.vant
           })
         }
       })

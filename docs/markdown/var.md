@@ -23,7 +23,3 @@ css4 的变量文件中也需要定义
 
 另外需要注意的是，`./xmi.theme.less` 已通过插件默认注入，无需手动引入。
 
-### 变量定制
-
-<demo-code self>../components/var.vue</demo-code>
-

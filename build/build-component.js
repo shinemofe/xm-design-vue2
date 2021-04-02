@@ -28,11 +28,11 @@ async function compileDir (dir, relativePath, lessCollector) {
 
 module.exports = components => {
   consola.info('  🔧 处理 sfc/jsx...')
-  return Promise.all(components.map(async ({ dir, name }) => {
+  return Promise.all(components.map(async ({ dir, name, vant }) => {
     const less = []
     const style = path.join(dir, 'index.less')
     if (fs.pathExistsSync(style)) {
-      await compileLess(style, name)
+      await compileLess(style, name, null, vant)
     }
     await compileDir(dir, name, less)
     if (less.length) {

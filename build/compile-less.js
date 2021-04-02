@@ -24,7 +24,7 @@ const TildeResolverPlugin = {
   }
 }
 
-module.exports = async function compile (filePath, name, code) {
+module.exports = async function compile (filePath, name, code, vant) {
   const isEntryLess = name === ''
   const options = {
     filename: filePath,
@@ -37,7 +37,13 @@ module.exports = async function compile (filePath, name, code) {
     }
   }
 
-  const source = code || readFileSync(filePath, 'utf-8')
+  let source = code || readFileSync(filePath, 'utf-8')
+  if (vant) {
+    // vant 的样式文件去除头部的 van 组件引用
+    source = source.split('\n').filter(x => !x.startsWith(`@import '~vant`)).join('\n')
+    return fs.outputFile(path.join(es, name, 'index.less'), source)
+  }
+
   const { css } = await render(source, options)
 
   const config = await postcssrc({}, path.resolve(__dirname, './postcss.config.js'))

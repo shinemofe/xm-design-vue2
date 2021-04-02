@@ -8,6 +8,9 @@ module.exports = {
   output: {
     filename: 'index.js',
     path: lib,
-    libraryTarget: 'commonjs2'
+    libraryTarget: 'umd'
+  },
+  externals: {
+    vue: 'Vue'
   }
 }

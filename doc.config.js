@@ -45,7 +45,7 @@ module.exports = {
           vant: true
         },
         {
-          path: 'van-tab',
+          path: 'van-tabs',
           title: 'Tab 导航',
           vant: true
         }

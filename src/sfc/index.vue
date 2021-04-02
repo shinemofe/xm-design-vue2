@@ -6,13 +6,15 @@
 </template>
 
 <script>
-export default {
+import { componentWrap } from '../utils/util'
+
+export default componentWrap('sfc', {
   data () {
     return {
       msg: 'world'
     }
   }
-}
+})
 </script>
 
 <style lang="less" scoped>

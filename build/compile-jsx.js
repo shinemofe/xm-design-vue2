@@ -8,6 +8,7 @@ const options = {
   configFile: false,
   presets: [
     // '@vue/cli-plugin-babel/preset',
+    '@vue/babel-preset-jsx',
     [
       '@babel/preset-env',
       {
@@ -23,7 +24,6 @@ const options = {
     ]
   ],
   plugins: [
-    '@vue/babel-plugin-jsx',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-nullish-coalescing-operator',
     [
