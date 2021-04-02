@@ -3,6 +3,7 @@ const fs = require('fs-extra')
 const hash = require('hash-sum')
 const { parse, compileTemplate, compileStyle } = require('@vue/component-compiler-utils')
 const compiler = require('vue-template-compiler')
+const path = require('path')
 const consola = require('consola')
 const EXPORT_WRAP = /(export default[\s\S]+?\{)/
 const EXPORT = 'export default {'
@@ -52,13 +53,26 @@ async function doParse (file, name) {
   script = trim(descriptor.script.content).replace(EXPORT_PREFIX, script)
 
   const less = scopedId ? descriptor.styles.map(x => {
-    return compileStyle({
+    // 利用 vue 的 compileStyle 转化时也要注意变量的注入
+    const res = compileStyle({
       id: scopedId,
       scoped: true,
       source: x.content,
       filename: '',
       preprocessLang: 'less',
-    }).code
+      preprocessOptions: {
+        modifyVars: {
+          hack: `true; @import "${path.resolve(__dirname, '../xmi.theme.less')}";`
+        }
+      }
+    })
+    if (res.errors.length) {
+      console.log(JSON.stringify(res.errors))
+      consola.error(`组件 ${file} less scoped 转化报错.`)
+      process.exit(0)
+    } else {
+      return res.code
+    }
   }) : descriptor.styles.map(x => x.content)
 
   return {

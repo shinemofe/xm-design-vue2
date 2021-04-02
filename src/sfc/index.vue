@@ -20,5 +20,6 @@ export default componentWrap('sfc', {
 <style lang="less" scoped>
 .sfc {
   color: @main;
+  font-size: 14px;
 }
 </style>

@@ -2,7 +2,7 @@ const path = require('path')
 const { version } = require(path.resolve(__dirname, '../package.json'))
 const fs = require('fs-extra')
 const { getComponents, nameToCamel } = require('./utils')
-const { tconModules } = require('../doc.config')
+// const { tconModules } = require('../doc.config')
 
 const components = getComponents()
 const es = path.resolve(__dirname, '../es')
@@ -43,7 +43,7 @@ Array.prototype.unshift.apply(
   css,
   [
     '@import "../xmi.theme.less";'
-  ].concat(tconModules.map(x => `@import "~tcon/dist/${x}.css";`))
+  ] // .concat(tconModules.map(x => `@import "~tcon/dist/${x}.css";`))
 )
 
 fs.outputFileSync(jsPath, js)
