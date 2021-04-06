@@ -19,6 +19,14 @@ xnpm i @xm/design-vue -S
 }
 ```
 
+默认主题请在 html 中引入 css：
+
+```html
+<link rel="stylesheet" href="http://api.jituancaiyun.net/xmflow/var/export?type=css&link=1">
+```
+
+如果使用的 `css-in-js` 模式，也可以导出 js 文件在项目中引入：[变量导出地址](http://api.jituancaiyun.net/xmflow-fe/#/var)
+
 ## 引入组件库
 
 ### 方式一. 按需引入 
