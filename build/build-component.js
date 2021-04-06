@@ -12,7 +12,7 @@ async function compileDir (dir, relativePath, lessCollector) {
     const stat = await fs.stat(file)
     if (stat.isDirectory()) {
       await compileDir(file, `${relativePath}/${name}`, lessCollector)
-    } else if (/\.js/.test(name)) {
+    } else if (/\.js/.test(name) && !/\.less\.js/.test(name)) {
       await compileJsx.doBabel(file, relativePath, name)
     } else if (/\.vue/.test(name)) {
       await compileSfc
@@ -31,7 +31,7 @@ module.exports = components => {
   return Promise.all(components.map(async ({ dir, name, vant }) => {
     const less = []
     const style = path.join(dir, 'index.less')
-    if (fs.pathExistsSync(style)) {
+    if (vant || fs.pathExistsSync(style)) {
       await compileLess(style, name, null, vant)
     }
     await compileDir(dir, name, less)

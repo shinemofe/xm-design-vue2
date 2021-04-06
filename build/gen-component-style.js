@@ -28,12 +28,15 @@ module.exports = ({ file, name, vant, style }) => {
   let content = null
   if (vant) {
     // 处理 less 依赖
-    const source = readFileSync(style, 'utf8')
+    const source = readFileSync(`${style}.js`, 'utf8')
     content = source.split('\n')
-      .filter(x => x.startsWith(`@import '~vant`))
-      .map(x => x.replace(`@import '~`, 'require(\'').replace(';', ')'))
-    content.unshift('require(\'../../../xmi.theme.less\')')
-    content.push('require(\'../index.less\')')
+      .filter(x => x.startsWith(`import 'vant/`))
+      .map(x => x.replace(`import '`, 'require(\'') + ')')
+    content.unshift('require(\'../style/var.less\')')
+    // content.push('require(\'../index.less\')')
+    if (pathExistsSync(path.join(es, name, 'index.css'))) {
+      content.push('require(\'../index.css\')')
+    }
   } else {
     const deps = dependency(file)
     if (deps.length === 0) {

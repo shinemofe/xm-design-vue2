@@ -1,7 +1,7 @@
 const path = require('path')
 const fs = require('fs-extra')
 const { render, FileManager } = require('less')
-const { readFileSync } = require('fs-extra')
+const { readFileSync, pathExistsSync } = require('fs-extra')
 const postcss = require('postcss')
 const postcssrc = require('postcss-load-config')
 const CleanCss = require('clean-css')
@@ -31,24 +31,35 @@ module.exports = async function compile (filePath, name, code, vant) {
     filename: filePath,
     plugins: [TildeResolverPlugin]
   }
-  if (isEntryLess) {
-    // 处理入口 less
-    options.modifyVars = {
-      hack: `true; @import "${path.resolve(__dirname, '../xmi.theme.less')}";`
+  // if (isEntryLess) {
+  // 处理入口 less
+  options.modifyVars = {
+    hack: `true; @import "${path.resolve(__dirname, '../xmi.theme.less')}";`
+  }
+  // }
+
+  // let source = ''
+  if (vant) {
+    // vant 的样式文件去除头部的 van 组件引用
+    // source = readFileSync(`${filePath}.js`, 'utf-8')
+    //   .split('\n')
+    //   .filter(x => !x.startsWith(`import 'vant`))
+    //   .join('\n')
+    // 变量文件
+    const varPath = filePath.replace('index.less', 'var.less')
+    if (pathExistsSync(varPath)) {
+      await fs.copy(varPath, varPath.replace('/src/', '/es/'))
     }
+    // return fs.outputFile(path.join(es, name, 'index.less'), source)
+  } else {
+    // source = code || readFileSync(filePath, 'utf-8')
+  }
+
+  if (!code && !pathExistsSync(filePath)) {
+    return
   }
 
   let source = code || readFileSync(filePath, 'utf-8')
-  if (vant) {
-    // vant 的样式文件去除头部的 van 组件引用
-    source = source.split('\n').filter(x => !x.startsWith(`@import '~vant`)).join('\n')
-    // 变量文件
-    const varPath = filePath.replace('index.less', 'var.less')
-    if (fs.pathExistsSync(varPath)) {
-      await fs.copy(varPath, varPath.replace('/src/', '/es/'))
-    }
-    return fs.outputFile(path.join(es, name, 'index.less'), source)
-  }
 
   const cssImport = source.split('\n').filter(x => /\.css/.test(x))
   cssImport.forEach(x => {

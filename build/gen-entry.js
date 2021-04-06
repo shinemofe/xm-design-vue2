@@ -30,11 +30,25 @@ export default {
 }
 `
 
-const css = components.map(({ name, style, style2 }) => {
-  if (fs.pathExistsSync(style)) {
-    return `@import "./${name}/index.less";`
-  } else if (fs.pathExistsSync(style2)) {
-    return `@import "./${name}/index.css";`
+const vantLess = []
+components.forEach(({ style, vant }) => {
+  if (vant) {
+    fs.readFileSync(`${style}.js`, 'utf8')
+      .split('\n')
+      .filter(x => x.startsWith('import \'vant'))
+      .map(x => `@${x}`.replace('vant', '~vant') + ';')
+      .forEach(x => {
+        if (!vantLess.includes(x)) {
+          vantLess.push(x)
+        }
+      })
+  }
+})
+const css = components.map(({ name, style, style2, vant }) => {
+  if (fs.pathExistsSync(style2)) {
+    return `@import "../es/${name}/index.css";`
+  } else if (fs.pathExistsSync(style)) {
+    return `@import "../es/${name}/index.less";`
   }
 }).filter(Boolean)
 
@@ -42,8 +56,9 @@ const css = components.map(({ name, style, style2 }) => {
 Array.prototype.unshift.apply(
   css,
   [
-    '@import "../xmi.theme.less";'
-  ] // .concat(tconModules.map(x => `@import "~tcon/dist/${x}.css";`))
+    '@import "./style/var.less";',
+    ...vantLess
+  ]
 )
 
 fs.outputFileSync(jsPath, js)

@@ -9,7 +9,8 @@ import 'tcon/dist/reset.css'
 catelogs.forEach(it => {
   it.items.filter(x => !x.md).forEach(com => {
     if (com.vant) {
-      require(`../src/${com.path}/index.less`)
+      // 使用 js 避免重复引用
+      require(`../src/${com.path}/index.less.js`)
     }
     Vue.use(require(`../src/${com.path}/index`).default)
   })

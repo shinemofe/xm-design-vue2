@@ -2,6 +2,8 @@ const { getComponents, getFixed } = require('./utils')
 const buildComponent = require('./build-component')
 const genStyle = require('./gen-style')
 const consola = require('consola')
+const path = require('path')
+const fs = require('fs-extra')
 
 const components = getComponents()
 const args = process.argv
@@ -21,9 +23,12 @@ if (dirs.length) {
   Array.prototype.push.apply(processComponents, components)
 }
 
+const theme = path.join(__dirname, '../es', 'style', 'var.less')
+fs.outputFileSync(theme, fs.readFileSync(path.resolve(__dirname, '../xmi.theme.less'), 'utf8').replace(/src\//g, '../'))
+
 if (processComponents.length) {
-  consola.info(`共 ${processComponents.length} 个组件待处理`)
   const jsArr = getFixed().concat(processComponents)
+  consola.info(`共 ${jsArr.length} 个组件待处理`)
 
   buildComponent(jsArr).then(() => genStyle(processComponents)).then(() => {
     consola.success('全部完成')
