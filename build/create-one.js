@@ -74,7 +74,7 @@ const render = (h, context) => {
 export default componentWrap('${name}', { render }, true)
 `
 
-const jsxLess = (name, type) => `${type === 'vant' ? `// 引入组件依赖的样式 \n@import \'~vant/es/${name.split(`-`)[1]}/index.less\';\n` : ''}.${name} {
+const jsxLess = (name, type) => `${type === 'vant' ? `// 引入组件依赖的样式 \nimport \'vant/es/${name.split(`-`)[1]}/index.less\'\n` : ''}.${name} {
 }
 `
 
@@ -117,7 +117,7 @@ async function inject () {
     } else {
       await fs.outputFile(path.join(src, name, 'index.jsx'), jsxTpl.replace(/%name%/g, name))
     }
-    await fs.outputFile(path.join(src, name, 'index.less'), jsxLess(name, type))
+    await fs.outputFile(path.join(src, name, `index.less${type === 'vant' ? '.js' : ''}`), jsxLess(name, type))
   }
   await fs.outputFile(path.join(src, name, 'README.md'), mdTpl(name))
   consola.success(`组件 ${chalk.yellow(name)} 创建成功`)

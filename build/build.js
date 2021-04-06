@@ -2,8 +2,8 @@ const { getComponents, getFixed } = require('./utils')
 const buildComponent = require('./build-component')
 const genStyle = require('./gen-style')
 const consola = require('consola')
-const path = require('path')
-const fs = require('fs-extra')
+// const path = require('path')
+// const fs = require('fs-extra')
 
 const components = getComponents()
 const args = process.argv
@@ -23,8 +23,8 @@ if (dirs.length) {
   Array.prototype.push.apply(processComponents, components)
 }
 
-const theme = path.join(__dirname, '../es', 'style', 'var.less')
-fs.outputFileSync(theme, fs.readFileSync(path.resolve(__dirname, '../xmi.theme.less'), 'utf8').replace(/src\//g, '../'))
+// const theme = path.join(__dirname, '../es', 'style', 'var.less')
+// fs.outputFileSync(theme, fs.readFileSync(path.resolve(__dirname, '../xmi.theme.less'), 'utf8').replace(/src\//g, '../'))
 
 if (processComponents.length) {
   const jsArr = getFixed().concat(processComponents)

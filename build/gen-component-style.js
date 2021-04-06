@@ -31,9 +31,17 @@ module.exports = ({ file, name, vant, style }) => {
     const source = readFileSync(`${style}.js`, 'utf8')
     content = source.split('\n')
       .filter(x => x.startsWith(`import 'vant/`))
+      .filter(x => x.indexOf(`vant/es/${name.split('-')[1]}`) === -1)
       .map(x => x.replace(`import '`, 'require(\'') + ')')
-    content.unshift('require(\'../style/var.less\')')
-    // content.push('require(\'../index.less\')')
+      .map(x => {
+        const depModuleName = 'van-' + x.replace('require(\'vant/es/', '').split('/')[0]
+        // 判断本地是否存在依赖模块的 css
+        if (pathExistsSync(path.join(es, depModuleName, 'index.css'))) {
+          return `require('../../${depModuleName}/index.css')`
+        }
+        // 不存在就直接引入 vant 的
+        return x
+      })
     if (pathExistsSync(path.join(es, name, 'index.css'))) {
       content.push('require(\'../index.css\')')
     }

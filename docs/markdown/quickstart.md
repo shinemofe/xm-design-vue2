@@ -10,25 +10,14 @@ xnpm i @xm/design-vue -S
 
 > 本组件库内置安装了 vant^2.12.10 ，且全局注册，所以你的项目无需额外安装 vant
 
-### 使用官方模版
+关于 less，请锁定版本：
 
-模版初始化了所有依赖项，无需额外配置。
-
-第一步，先安装官方脚手架工具 `xmmp-cli`
-
+```json
+{
+  "less": "3.0.4",
+  "less-loader": "5.0.0"
+}
 ```
-yarn global add xmmp-cli
-
-# npm
-npm i xmmp-cli -g
-```
-
-第二步，初始化小程序模版
-
-```
-xmmp create mp2 <ProjectName>
-```
-
 
 ## 引入组件库
 
@@ -41,52 +30,36 @@ xmmp create mp2 <ProjectName>
 npm i babel-plugin-import -D
 ```
 
-```js
-// 在.babelrc 中添加配置
-// 注意：webpack 1 无需设置 libraryDirectory
+
+在 .babelrc 中添加配置，注意 libraryDirectory 为 es 目录。
+
+```json
 {
   "plugins": [
-    ["import", {
-      "libraryName": "xmmp",
-      "libraryDirectory": "es",
-      "style": true
-    }]
+    [
+      "import", {
+        "libraryName": "@xm/design-vue",
+        "libraryDirectory": "es",
+        "style": true
+      },
+      "@xm/design-vue"
+    ]
   ]
 }
-
-// 对于使用 babel7 的用户，可以在 babel.config.js 中配置
-module.exports = {
-  plugins: [
-    ['import', {
-      libraryName: 'xmmp',
-      libraryDirectory: 'es',
-      style: true
-    }, 'xmmp']
-  ]
-};
 ```
 
 ```js
 // 接着你可以在代码中直接引入 Vant 组件
 // 插件会自动将代码转化为方式二中的按需引入形式
-import { ColorBlock } from 'xmmp';
-```
-
-### 方式二. App私有协议引入(推荐)
-
-在项目模版文件`index.html`中引入
-
-```html
-<script src="shinemosdk://10086/index.js"></script>
-<link rel="stylesheet" href="shinemosdk://10086/index.css">
+import { VanButton } from '@xm/design-vue';
 ```
 
 ### 方式三. 一次性全量引入
 
 ```js
-import { createApp } from 'vue'
-import Xmmp from 'xmmp/lib/index.js'
+import Vue from 'vue'
+import XmDesign from 'xmmp/lib/index.js'
 import 'xmmp/lib/index.css'
 
-createApp().use(Xmmp).mount('#app')
+Vue.use(XmDesign)
 ```

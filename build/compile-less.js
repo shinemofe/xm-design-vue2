@@ -38,28 +38,18 @@ module.exports = async function compile (filePath, name, code, vant) {
   }
   // }
 
-  // let source = ''
+  let source = ''
   if (vant) {
-    // vant 的样式文件去除头部的 van 组件引用
-    // source = readFileSync(`${filePath}.js`, 'utf-8')
-    //   .split('\n')
-    //   .filter(x => !x.startsWith(`import 'vant`))
-    //   .join('\n')
     // 变量文件
     const varPath = filePath.replace('index.less', 'var.less')
     if (pathExistsSync(varPath)) {
       await fs.copy(varPath, varPath.replace('/src/', '/es/'))
     }
-    // return fs.outputFile(path.join(es, name, 'index.less'), source)
+    // vant 利用变量将 less 转化为 css
+    source = `@import '~vant/es/${name.split('-')[1]}/index.less';`
   } else {
-    // source = code || readFileSync(filePath, 'utf-8')
+    source = code || readFileSync(filePath, 'utf-8')
   }
-
-  if (!code && !pathExistsSync(filePath)) {
-    return
-  }
-
-  let source = code || readFileSync(filePath, 'utf-8')
 
   const cssImport = source.split('\n').filter(x => /\.css/.test(x))
   cssImport.forEach(x => {
