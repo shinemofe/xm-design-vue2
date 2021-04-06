@@ -26,8 +26,8 @@ import Layout from '../Layout'
 // import VanButton from '@@/van-button'
 // import '../../es/van-button/style'
 
-import VanToast from 'vant/es/toast'
-import 'vant/es/toast/index.less'
+// import VanToast from 'vant/es/toast'
+// import 'vant/es/toast/index.less'
 
 export default {
   components: {
@@ -37,7 +37,7 @@ export default {
 
   methods: {
     toast () {
-      VanToast('666')
+      // VanToast('666')
     }
   }
 }

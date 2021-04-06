@@ -5,7 +5,9 @@ const es = path.resolve(__dirname, '../es')
 
 const utils = {
   upperFirst: str => str[0].toUpperCase() + str.substr(1),
+
   nameToCamel: name => name.split('-').map(utils.upperFirst).join(''),
+
   getComponents: () => {
     const components = []
     catelogs.forEach(group => {
@@ -25,6 +27,7 @@ const utils = {
     })
     return components
   },
+
   getFixed: () => {
     return ['utils'].map(x => ({
       dir: path.join(pkgs, x),

@@ -45,6 +45,21 @@ module.exports = {
           vant: true
         },
         {
+          path: 'van-cell',
+          title: 'Cell 单元格',
+          vant: true
+        },
+        {
+          path: 'van-dialog',
+          title: 'Dialog 对话框',
+          vant: true
+        },
+        {
+          path: 'van-toast',
+          title: 'Toast 提示',
+          vant: true
+        },
+        {
           path: 'van-tabs',
           title: 'Tab 导航',
           vant: true

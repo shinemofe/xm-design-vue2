@@ -11,13 +11,9 @@ catelogs.forEach(it => {
     if (com.vant) {
       require(`../src/${com.path}/index.less`)
     }
-    Vue.component(com.path, () => import(`../src/${com.path}/index`))
+    Vue.use(require(`../src/${com.path}/index`).default)
   })
 })
-
-import Dialog from 'vant/es/dialog'
-import 'vant/es/dialog/index.less'
-import 'vant/es/overlay/index.less'
 
 tconModules.forEach(x => {
   require(`tcon/dist/${x}.css`)
@@ -39,7 +35,7 @@ if (css) {
   if (isParentPreview) {
     insert()
   } else {
-    Dialog.confirm({ message: '本地主题存在，是否加载本地主题样式' }).then(() => {
+    Vue.prototype.$dialog.confirm({ message: '本地主题存在，是否加载本地主题样式' }).then(() => {
       insert()
     }).catch(() => {
       localStorage.removeItem('xm-design-vue2-theme')

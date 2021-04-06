@@ -42,6 +42,11 @@ module.exports = async function compile (filePath, name, code, vant) {
   if (vant) {
     // vant 的样式文件去除头部的 van 组件引用
     source = source.split('\n').filter(x => !x.startsWith(`@import '~vant`)).join('\n')
+    // 变量文件
+    const varPath = filePath.replace('index.less', 'var.less')
+    if (fs.pathExistsSync(varPath)) {
+      await fs.copy(varPath, varPath.replace('/src/', '/es/'))
+    }
     return fs.outputFile(path.join(es, name, 'index.less'), source)
   }
 

@@ -9,7 +9,7 @@
           </a>
           <ul class="van-doc-header__top-nav">
             <li class="van-doc-header__top-nav-item">
-              <a target="_blank" :href="info.git" class="van-doc-header__logo-link">
+              <a target="_blank" :href="git" class="van-doc-header__logo-link">
                 <img src="https://b.yzcdn.cn/vant/logo/github.svg">
               </a>
             </li>
@@ -89,7 +89,7 @@
 <script>
 // import { computed, ref, onMounted } from 'vue'
 import router from './router'
-import { catelogs, info } from '../doc.config'
+import { catelogs, info, git } from '../doc.config'
 
 export default {
   computed: {
@@ -109,7 +109,8 @@ export default {
     return {
       catelogs,
       scrollFixed,
-      info
+      info,
+      git
       // iframe
       // doRouterSync
       // vantPreviewUrl,
