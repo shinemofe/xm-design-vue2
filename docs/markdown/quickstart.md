@@ -52,9 +52,16 @@ npm i babel-plugin-import -D
 // 接着你可以在代码中直接引入 Vant 组件
 // 插件会自动将代码转化为方式二中的按需引入形式
 import { VanButton } from '@xm/design-vue';
+
+        ↓ ↓ ↓ ↓ ↓ ↓
+
+import VanButton from '@xm/design-vue/es/van-button';
+import '@xm/design-vue/es/van-button/style';
 ```
 
-### 方式三. 一次性全量引入
+
+
+### 方式二. 一次性全量引入
 
 ```js
 import Vue from 'vue'
