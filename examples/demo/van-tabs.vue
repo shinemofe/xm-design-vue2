@@ -1,7 +1,7 @@
 <template>
   <layout title="Tab">
-    <p class="c-999 mb10">吸顶 Tab</p>
-    <van-tabs v-model:active="active" style="margin: 0 -20px" sticky>
+    <p class="c-999 m10">吸顶 Tab</p>
+    <van-tabs v-model:active="active" sticky>
       <van-tab title="标签 1">
         <div style="height: 300px">
           内容 1
@@ -11,8 +11,8 @@
       <van-tab title="标签 3">内容 3</van-tab>
       <van-tab title="标签 4">内容 4</van-tab>
     </van-tabs>
-    <p class="c-999 mb10">默认Tab</p>
-    <van-tabs v-model:active="active" style="margin: 0 -20px">
+    <p class="c-999 m10">默认Tab</p>
+    <van-tabs v-model:active="active">
       <van-tab title="标签 1">
         <div style="height: 300px">
           内容 1

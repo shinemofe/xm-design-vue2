@@ -1,5 +1,5 @@
 <template>
-  <layout title="Button">
+  <layout title="Button" class="plr20">
     <p class="c-999 mb10">默认按钮</p>
     <div class="demo__button">
       <van-button>默认</van-button>
