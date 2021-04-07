@@ -26,6 +26,7 @@ async function getConfig () {
   return config
 }
 
+// 单文件组件写法
 const sfcTpl = `<template>
   <div class="%name%">
   </div>
@@ -51,6 +52,7 @@ export default componentWrap('sfc', {
 </style>
 `
 
+// jsx 写法
 const jsxTpl = `export default {
   name: '%name%',
 
@@ -64,6 +66,7 @@ const jsxTpl = `export default {
 }
 `
 
+// 基于 vant 覆盖的组件写法
 const vantTpl = name => `import ${nameToCamel(name)} from 'vant/es/${name.split(`-`)[1]}'
 import { componentWrap } from '../utils/util'
 
@@ -74,10 +77,12 @@ const render = (h, context) => {
 export default componentWrap('${name}', { render }, true)
 `
 
-const jsxLess = (name, type) => `${type === 'vant' ? `// 引入组件依赖的样式 \nimport \'vant/es/${name.split(`-`)[1]}/index.less\'\n` : ''}.${name} {
+// less
+const jsxLess = (name, type) => type === 'vant' ? `// 引入组件依赖的样式\nimport \'vant/es/${name.split(`-`)[1]}/index.less\'\n` : `.${name} {
 }
 `
 
+// 介绍文档
 const mdTpl = name => `# ${name}
 
 ### 使用
@@ -97,6 +102,33 @@ Vue.use(${nameToCamel(name)})
 \`\`\`
 `
 
+// demo 模版
+const demoTpl = name => `<template>
+  <layout title="${nameToCamel(name)}">
+    <${name} />
+  </layout>
+</template>
+
+<script>
+import Layout from '../Layout'
+
+export default {
+  name: 'demo-${name}',
+
+  components: {
+    Layout
+  },
+
+  data () {
+    return {}
+  },
+
+  created () {
+  }
+}
+</script>
+`
+
 async function inject () {
   const { type, name } = await getConfig()
 
@@ -109,17 +141,21 @@ async function inject () {
     return consola.error('组件已存在')
   }
 
+  const componentDir = file => path.join(src, name, file)
+  const demoDir = file => path.resolve(__dirname, '../examples/demo', file)
+
   if (type === 'sfc') {
-    await fs.outputFile(path.join(src, name, 'index.vue'), sfcTpl.replace(/%name%/g, name))
+    await fs.outputFile(componentDir('index.vue'), sfcTpl.replace(/%name%/g, name))
   } else {
     if (type === 'vant') {
-      await fs.outputFile(path.join(src, name, 'index.jsx'), vantTpl(name))
+      await fs.outputFile(componentDir('index.jsx'), vantTpl(name))
     } else {
-      await fs.outputFile(path.join(src, name, 'index.jsx'), jsxTpl.replace(/%name%/g, name))
+      await fs.outputFile(componentDir('index.jsx'), jsxTpl.replace(/%name%/g, name))
     }
-    await fs.outputFile(path.join(src, name, `index.less${type === 'vant' ? '.js' : ''}`), jsxLess(name, type))
+    await fs.outputFile(componentDir(`index.less${type === 'vant' ? '.js' : ''}`), jsxLess(name, type))
   }
-  await fs.outputFile(path.join(src, name, 'README.md'), mdTpl(name))
+  await fs.outputFile(componentDir('README.md'), mdTpl(name))
+  await fs.outputFile(demoDir(`${name}.vue`), demoTpl(name))
   consola.success(`组件 ${chalk.yellow(name)} 创建成功`)
 }
 

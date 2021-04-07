@@ -63,11 +63,36 @@ module.exports = {
           path: 'van-tabs',
           title: 'Tab 导航',
           vant: true
+        },
+        {
+          path: 'van-image',
+          title: 'Image 图片',
+          vant: true
+        },
+        {
+          path: 'van-row',
+          title: 'Layout row',
+          vant: true
+        },
+        {
+          path: 'van-col',
+          title: 'Layout col',
+          vant: true
+        },
+        {
+          path: 'van-popup',
+          title: 'Popup 弹出层',
+          vant: true
+        },
+        {
+          path: 'van-field',
+          title: 'Input 输入框',
+          vant: true
         }
       ]
     },
     {
-      title: '小程序业务',
+      title: '业务组件',
       items: [
       ]
     }
