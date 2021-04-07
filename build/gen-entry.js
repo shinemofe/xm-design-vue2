@@ -56,7 +56,7 @@ const css = components.map(({ name, style, style2, vant }) => {
 Array.prototype.unshift.apply(
   css,
   [
-    '@import "./style/var.less";',
+    // '@import "./style/var.less";',
     ...vantLess
   ]
 )
