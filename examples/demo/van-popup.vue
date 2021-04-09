@@ -10,10 +10,10 @@
 
     <van-popup
       v-model="show"
-      style="height: 200px"
+      style="min-width:200px;height: 200px"
       :position="position"
       closeable
-      round
+      :round="round"
     >
       内容
     </van-popup>
