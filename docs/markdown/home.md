@@ -29,18 +29,32 @@
 
 ### 开发新组件
 
-方式：点击右上角 GIT 地址提 pr。
+> 方式：点击右上角 GIT 地址提 pr。
+
+第一步：新建组件，如果是覆盖 vant 组件，选择 `vant`
 
 ```
 npm run create
 ```
 
-会新建 `src/component-name`，打包该组件：
+第二步：此时，在 `src` 和 `example/demo` 目录下已为你创建好最基本组件文件，对于 vant 组件的覆盖，你需要做的：
 
-```
-npm run build component-name
-```
+- 引入其 esm 组件，通过纯函数组件导出
+- 引入其样式依赖，通过 `node_modules/vant/es/<组件>/style/index.js` 中可以看到依赖项  
+    譬如 `van-button`
+    ```js
+    import '../../style/base.css';
+    import '../../info/index.css';
+    import '../../icon/index.css';
+    import '../../loading/index.css';
+    import '../index.css';
+    ```
+    将依赖项的源 less 文件写入 `index.less.js`，此处是：`style/base.less`、`info/index.less`、`icon/index.less`、`loading/index.less`
+- 覆盖变量，需要从 vant 的[组件变量文件](https://github.com/youzan/vant/blob/dev/src/checkbox/var.less)中查看，具体在 `vant/src/<组件>/var.less` 中，只需要全部拷贝，在我们的组件目录下新建 `var.less` 文件存放
+- 主题库引入变量文件，在 `xmi.theme.less` 中引入组件的变量文件
 
-配置左侧菜单
+第三步：配置左侧菜单
 
-在文件 `doc.config.js` catelogs 中配置。
+  在文件 `doc.config.js` catelogs 中配置组件入口
+
+第四步：发起 pr 提交组件到 master

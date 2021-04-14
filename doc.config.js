@@ -41,55 +41,49 @@ module.exports = {
       items: [
         {
           path: 'van-button',
-          title: 'Button 按钮',
-          vant: true
+          title: 'Button 按钮'
         },
         {
           path: 'van-cell',
-          title: 'Cell 单元格',
-          vant: true
+          title: 'Cell 单元格'
         },
         {
           path: 'van-dialog',
-          title: 'Dialog 对话框',
-          vant: true
+          title: 'Dialog 对话框'
         },
         {
           path: 'van-toast',
-          title: 'Toast 提示',
-          vant: true
+          title: 'Toast 提示'
         },
         {
           path: 'van-tabs',
-          title: 'Tab 导航',
-          vant: true
+          title: 'Tab 导航'
         },
         {
           path: 'van-image',
-          title: 'Image 图片',
-          vant: true
+          title: 'Image 图片'
         },
         {
           path: 'van-row',
-          title: 'Layout row',
-          vant: true
+          title: 'Layout row'
         },
         {
           path: 'van-col',
-          title: 'Layout col',
-          vant: true
+          title: 'Layout col'
         },
         {
           path: 'van-popup',
-          title: 'Popup 弹出层',
-          vant: true
+          title: 'Popup 弹出层'
         },
         {
           path: 'van-field',
-          title: 'Input 输入框',
-          vant: true
+          title: 'Input 输入框'
+        },
+        {
+          path: 'van-checkbox',
+          title: 'Checkbox 复选框'
         }
-      ]
+      ].map(x => { x.vant = true; return x })
     },
     {
       title: '业务组件',

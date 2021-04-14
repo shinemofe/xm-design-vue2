@@ -1,9 +1,9 @@
-// import Vue from 'vue'
+import Vue from 'vue'
 import VanCell from 'vant/es/cell'
-// import VanCellGroup from 'vant/es/cell-group'
+import VanCellGroup from 'vant/es/cell-group'
 import { componentWrap } from '../utils/util'
 
-// Vue.use(VanCellGroup)
+Vue.use(VanCellGroup)
 
 const render = (h, context) => {
   return <VanCell {...context} {...context.data} />

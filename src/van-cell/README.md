@@ -8,7 +8,7 @@ import { VanCell } from '@xm/design-vue'
 Vue.use(VanCell)
 ```
 
-注意：此处无 VanCellGroup 组件搭配使用
+注意：已自动引入 VanCellGroup 组件，可搭配使用
 
 ## 示例
 
