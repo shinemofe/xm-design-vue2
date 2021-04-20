@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs-extra')
-const { render, FileManager } = require('less')
+const less = require('less')
 const { readFileSync, pathExistsSync } = require('fs-extra')
 const postcss = require('postcss')
 const postcssrc = require('postcss-load-config')
@@ -8,14 +8,15 @@ const CleanCss = require('clean-css')
 const consola = require('consola')
 const es = path.resolve(__dirname, '../es')
 const { tconModules } = require('../doc.config')
+const LessFn = require('less-plugin-functions')
 
 const cleanCss = new CleanCss()
 
 // less plugin to resolve tilde
-class TildeResolver extends FileManager {
+class TildeResolver extends less.FileManager {
   loadFile (filename, ...args) {
     filename = filename.replace('~', '')
-    return FileManager.prototype.loadFile.apply(this, [filename, ...args])
+    return less.FileManager.prototype.loadFile.apply(this, [filename, ...args])
   }
 }
 
@@ -29,7 +30,8 @@ module.exports = async function compile (filePath, name, code, vant) {
   const isEntryLess = name === ''
   const options = {
     filename: filePath,
-    plugins: [TildeResolverPlugin]
+    plugins: [TildeResolverPlugin, new LessFn({ alwaysOverride: true })],
+    alwaysOverride: true
   }
   // if (isEntryLess) {
   // 处理入口 less
@@ -55,7 +57,7 @@ module.exports = async function compile (filePath, name, code, vant) {
   cssImport.forEach(x => {
     source = source.replace(x, '')
   })
-  const { css } = await render(source, options)
+  const { css } = await less.render(source, options)
 
   const config = await postcssrc({}, path.resolve(__dirname, './postcss.config.js'))
   const result = await postcss(config.plugins).process(css, {

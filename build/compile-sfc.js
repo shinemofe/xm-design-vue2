@@ -10,6 +10,7 @@ const EXPORT = 'export default {'
 const RENDER = 'export function render'
 const VUE_RENDER = '__vue_render'
 const STATIC_RENDER_FN = '__vue_staticRenderFns__'
+const LessFn = require('less-plugin-functions')
 
 function trim (code) {
   return code.replace(/\/\/\n/g, '').trim()
@@ -63,7 +64,8 @@ async function doParse (file, name) {
       preprocessOptions: {
         modifyVars: {
           hack: `true; @import "${path.resolve(__dirname, '../xmi.theme.less')}";`
-        }
+        },
+        plugins: [new LessFn({ alwaysOverride: true })]
       }
     })
     if (res.errors.length) {
