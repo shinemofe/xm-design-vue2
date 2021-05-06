@@ -1,4 +1,5 @@
 const path = require('path')
+const LessFn = require('less-plugin-functions')
 
 module.exports = {
   publicPath: './',
@@ -27,7 +28,8 @@ module.exports = {
       less: {
         modifyVars: {
           hack: `true; @import "${path.resolve(__dirname, 'xmi.theme.less')}";`
-        }
+        },
+        plugins: [new LessFn({ alwaysOverride: true })]
       }
     }
   },
