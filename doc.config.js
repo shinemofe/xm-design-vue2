@@ -33,6 +33,10 @@ module.exports = {
         {
           path: 'sfc',
           title: 'SFC 组件'
+        },
+        {
+          path: 'xm-table',
+          title: 'Table 表格'
         }
       ]
     },

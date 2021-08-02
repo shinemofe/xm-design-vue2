@@ -35,7 +35,7 @@ const sfcTpl = `<template>
 <script>
 import { componentWrap } from '../utils/util'
 
-export default componentWrap('sfc', {
+export default componentWrap('%name%', {
   name: '%name%',
 
   data () {
