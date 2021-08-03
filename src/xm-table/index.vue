@@ -128,16 +128,16 @@ export default componentWrap('xm-table', {
   computed: {
     tableColumnWidth () {
       // eslint-disable-next-line no-return-assign
-      const width = this.thead.reduce((sum, item) => sum += item.width, 0)
+      const width = this.thead.reduce((sum, item) => sum += (item.width || 0), 0)
       if (this.optionsConfig) {
-        return width + (this.optionsConfig.width || 0)
+        return Math.max(width + (this.optionsConfig.width || 0), this.tableWidth)
       }
-      return width
+      return Math.max(width, this.tableWidth)
     },
 
     fixedColumnWidth () {
       // eslint-disable-next-line no-return-assign
-      return this.theadData.filter(x => x.fixed).reduce((sum, item) => sum += item.width, 0)
+      return this.theadData.filter(x => x.fixed).reduce((sum, item) => sum += (item.width || 0), 0)
     },
 
     theadData () {
@@ -154,10 +154,9 @@ export default componentWrap('xm-table', {
     },
 
     needFixed () {
-      return (
-        this.thead.some(x => x.fixed) ||
+      return this.thead.some(x => x.fixed) ||
         (this.optionsConfig && this.optionsConfig.fixed)
-      ) && this.tableColumnWidth > this.tableWidth
+      // ) && this.tableColumnWidth > this.tableWidth
     },
 
     showMore () {
@@ -177,12 +176,21 @@ export default componentWrap('xm-table', {
   },
 
   mounted () {
-    const { height, width } = this.$refs.table.getBoundingClientRect()
-    this.tableHeight = height
+    const { table, fixedThead } = this.$refs
+    const { width } = table.getBoundingClientRect()
     this.tableWidth = width
-    if (this.needFixed) {
-      this.fixedTheadHeight = this.$refs.fixedThead.$el.getBoundingClientRect().height
-    }
+    this.$nextTick(() => {
+      /**
+       * why do this way?
+       * tableWidth is initial box size,
+       * it`s based to calculate the table height after micro task.
+       */
+      const { height } = table.getBoundingClientRect()
+      this.tableHeight = height
+      if (this.needFixed && fixedThead) {
+        this.fixedTheadHeight = fixedThead.$el.getBoundingClientRect().height
+      }
+    })
   },
 
   methods: {
@@ -212,6 +220,10 @@ export default componentWrap('xm-table', {
 @import "var";
 .xm-table {
   position: relative;
+  overflow: hidden;
+  table {
+    // border-collapse: separate;
+  }
   .hidden {
     visibility: hidden;
   }
@@ -252,12 +264,34 @@ export default componentWrap('xm-table', {
     overflow: hidden;
   }
   &--border {
-    border: 1px @table-border-color solid;
+    border-top: 1px @table-border-color solid;
+     border-bottom: 1px @table-border-color solid;
+    &:after,
+    &:before {
+      display: block;
+      content: '';
+      position: absolute;
+    }
+    &:before {
+      left: 0;
+      bottom: 0;
+      top: 0;
+      border-left: 1px @table-border-color solid;
+    }
+    &:after {
+      right: 0;
+      top: 0;
+      bottom: 0;
+      border-right: 1px @table-border-color solid;
+    }
+  }
+  &--border {
+
   }
   &--border &__row:not(&__head :last-child):last-child {
     border-bottom: none;
   }
-  &--border &__row &__cell-wrapper:not(:first-child) &__cell {
+  &--border &__row &__cell-wrapper:not(:first-child) {
     border-left: 1px @table-border-color solid;
   }
 

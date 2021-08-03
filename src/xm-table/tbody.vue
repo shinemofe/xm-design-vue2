@@ -19,18 +19,26 @@
         class="xm-table__row"
       >
         <td
-          class="xm-table__cell-wrapper"
           v-for="(propFieldItem, j) in $parent.thead"
+          class="xm-table__cell-wrapper"
           :key="j"
           :style="{
-            width: $parent.getCellWidth(j)
+            width: propFieldItem.width !== undefined && `${propFieldItem.width}px`
           }"
         >
-          <div class="xm-table__cell">{{ dataItem[propFieldItem.prop] }}</div>
+          <div
+            class="xm-table__cell"
+            :class="{ hidden: fixed && !propFieldItem.fixed }"
+          >
+            {{ dataItem[propFieldItem.prop] }}
+          </div>
         </td>
         <td
-          v-if="$parent.options.length"
+          v-if="$parent.optionsConfig && $parent.options.length"
           class="xm-table__cell-wrapper"
+          :style="{
+            width: $parent.optionsConfig && $parent.optionsConfig.width && `${$parent.optionsConfig.width}px`
+          }"
         >
           <div class="xm-table__cell">
             <span
@@ -74,6 +82,7 @@ export default {
     position: absolute;
     right: 0;
     left: auto;
+    table-layout: fixed;
   }
 }
 </style>

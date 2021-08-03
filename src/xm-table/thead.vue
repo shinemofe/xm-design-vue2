@@ -54,6 +54,7 @@ export default {
     position: absolute;
     right: 0;
     top: 0;
+    table-layout: fixed;
   }
 }
 </style>
