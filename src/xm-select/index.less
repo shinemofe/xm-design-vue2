@@ -1,0 +1,20 @@
+@import "var";
+
+.xm-select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  border: 1px @select-border-color solid;
+  padding: 5px 8px;
+  font-size: 12px;
+  border-radius: 4px;
+  background: #fff;
+  &__text {
+    max-width: @select-text-max-width;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-right: 5px;
+  }
+}

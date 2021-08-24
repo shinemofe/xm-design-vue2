@@ -53,7 +53,9 @@ export default componentWrap('%name%', {
 `
 
 // jsx 写法
-const jsxTpl = `export default {
+const jsxTpl = `import { componentWrap } from '../utils/util'
+
+export default componentWrap('%name%', {
   name: '%name%',
 
   data () {
@@ -63,7 +65,7 @@ const jsxTpl = `export default {
   render (h) {
     return <div />
   }
-}
+})
 `
 
 // 基于 vant 覆盖的组件写法
