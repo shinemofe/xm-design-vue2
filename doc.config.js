@@ -37,6 +37,10 @@ module.exports = {
         {
           path: 'xm-table',
           title: 'Table 表格'
+        },
+        {
+          path: 'xm-select',
+          title: 'Select 选择'
         }
       ]
     },
@@ -78,6 +82,10 @@ module.exports = {
         {
           path: 'van-popup',
           title: 'Popup 弹出层'
+        },
+        {
+          path: 'van-picker',
+          title: 'Picker 选择'
         },
         {
           path: 'van-field',
