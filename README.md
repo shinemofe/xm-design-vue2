@@ -1,6 +1,9 @@
-# Xm Design
+<div align="center">
+  <img src="https://user-images.githubusercontent.com/9743418/104887549-680c1e80-59a6-11eb-8222-40e1d38a0fe2.png" width="100px">
 
-基于 vant 和 css 变量的可定制主题的 Vue2 UI 组件库
+  # Xm Design
+  基于 vant 和 css 变量的可定制主题的 Vue2 UI 组件库
+</div> 
 
 ### 代码贡献
 
