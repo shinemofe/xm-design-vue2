@@ -89,6 +89,7 @@
   width: 100%;
   top: 0;
   left: 0;
+  z-index: 10;
 }
 .demo-nav__title {
   font-weight: 600;
