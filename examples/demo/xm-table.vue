@@ -26,6 +26,16 @@
         border
       />
     </div>
+    <div class="p10 bg-fff mt10">
+      <p class="mb10">空数据</p>
+      <xm-table
+        :thead="thead1"
+        :data="[]"
+        :options="options"
+        :options-config="optionsConfig2"
+        border
+      />
+    </div>
   </layout>
 </template>
 

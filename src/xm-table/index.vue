@@ -35,6 +35,9 @@
       <div
         v-if="needFixed"
         class="xm-table__fixed-right"
+        :class="{
+          'xm-table__fixed-right--shadow': showFixedRightShadow
+        }"
         :style="{
           width: `${fixedColumnWidth}px`,
           height: `${tableHeight}px`
@@ -121,7 +124,8 @@ export default componentWrap('xm-table', {
       tableHeight: 0,
       tableWidth: 0,
       fixedTheadHeight: 0,
-      more: false
+      more: false,
+      showFixedRightShadow: true
     }
   },
 
@@ -179,6 +183,7 @@ export default componentWrap('xm-table', {
     const { table, fixedThead } = this.$refs
     const { width } = table.getBoundingClientRect()
     this.tableWidth = width
+    this.showFixedRightShadow = this.tableWidth < this.tableColumnWidth
     this.$nextTick(() => {
       /**
        * why do this way?
@@ -204,6 +209,7 @@ export default componentWrap('xm-table', {
         left: e.target.scrollLeft
         // behavior: 'smooth'
       })
+      this.showFixedRightShadow = this.tableWidth + e.target.scrollLeft < this.tableColumnWidth
     },
 
     handleChangeMore () {
@@ -265,7 +271,7 @@ export default componentWrap('xm-table', {
   }
   &--border {
     border-top: 1px @table-border-color solid;
-     border-bottom: 1px @table-border-color solid;
+    border-bottom: 1px @table-border-color solid;
     &:after,
     &:before {
       display: block;
@@ -284,6 +290,10 @@ export default componentWrap('xm-table', {
       bottom: 0;
       border-right: 1px @table-border-color solid;
     }
+    & .no-data {
+      border-left: 1px @table-border-color solid;
+      border-right: 1px @table-border-color solid;
+    }
   }
   &--border {
 
@@ -299,12 +309,14 @@ export default componentWrap('xm-table', {
   &__fixed-right {
     position: absolute;
     overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
   }
   &__fixed-right {
     left: auto;
     right: 0;
     top: 0;
+    &--shadow {
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+    }
   }
 
   &__more {
