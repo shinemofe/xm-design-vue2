@@ -5,29 +5,21 @@
   基于 vant 和 css 变量的可定制主题的 Vue2 UI 组件库
 </div> 
 
-### 使用
-
-启动预览
+### 安装
 
 ```
-npm run docs:dev
-```
-
-打包组件
-
-```
-npm run build <组件>
+yarn add @xm/design-vue
 ```
 
 ### 新增组件
 
-请使用 pr 的方式
+输入
 
 ```shell
 npm run create
 ```
 
-你可以：
+组件类型 3 种：
 
 - sfc 语法组件
 - 覆盖 vant 组件
