@@ -41,6 +41,10 @@ module.exports = {
         {
           path: 'xm-select',
           title: 'Select 选择'
+        },
+        {
+          path: 'xm-cascade',
+          title: 'Cascade 选择'
         }
       ]
     },
