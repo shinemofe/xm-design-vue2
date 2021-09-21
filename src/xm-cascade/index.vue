@@ -47,14 +47,31 @@ import { componentWrap } from '../utils/util'
 import VanButton from '../van-button'
 
 export default componentWrap('xm-cascade', {
-  name: 'xm-cascade',
-
+  // name: 'xm-cascade',
   components: {
     VanButton
   },
 
   data () {
     return {
+    }
+  },
+
+  props: {
+    loadFun: {
+      type: Function,
+      default: () => Promise.resolve([])
+    },
+    /*
+     * 字符串数组
+     */
+    value: {
+      type: Array,
+      default: () => ([])
+    },
+    multiple: {
+      type: Boolean,
+      default: false
     }
   }
 })
