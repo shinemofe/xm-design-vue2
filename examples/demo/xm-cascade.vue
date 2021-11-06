@@ -2,15 +2,37 @@
   <layout title="XmCascade">
     <p class="plr15 ptb10 c-666">传入完整数据选择</p>
     <xm-cascade v-model="select" :list="list" />
-    <div class="p15">数据：{{ select }}</div>
+    <div class="p15 mb20">数据：{{ select }}</div>
+
+    <p class="plr15 ptb10 c-666">配合 Popup 使用</p>
+    <van-cell
+      title="选择地区"
+      is-link
+      @click="showPopup = true"
+    >
+      <span>请选择</span>
+    </van-cell>
+    <van-popup
+      v-model="showPopup"
+      position="bottom"
+      round
+    >
+      <xm-cascade
+        v-model="select4"
+        :list="list"
+        style="height: 300px"
+        @input="showPopup = false"
+      />
+    </van-popup>
+    <div class="p15 mb20">数据：{{ select4 }}</div>
 
     <p class="plr15 ptb10 c-666">从接口动态获取数据</p>
     <xm-cascade v-model="select2" :loadFun="loadFun" />
-    <div class="p15">数据：{{ select2 }}</div>
+    <div class="p15 mb20">数据：{{ select2 }}</div>
 
     <p class="plr15 ptb10 c-666">选择多个</p>
     <xm-cascade v-model="select3" :list="list" multiple />
-    <div class="p15">数据：{{ select3 }}</div>
+    <div class="p15 mb20">数据：{{ select3 }}</div>
   </layout>
 </template>
 
@@ -29,6 +51,8 @@ export default {
       select: [],
       select2: [],
       select3: [],
+      select4: [],
+      showPopup: false,
       list: [
         {
           id: 1,

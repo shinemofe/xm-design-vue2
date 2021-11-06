@@ -44,6 +44,30 @@ export default {
 </script>
 ```
 
+### 配合 Popup 使用
+
+```html
+<van-cell
+  title="选择地区"
+  is-link
+  @click="showPopup = true"
+>
+  <span>请选择</span>
+</van-cell>
+<van-popup
+  v-model="showPopup"
+  position="bottom"
+  round
+>
+  <xm-cascade
+    v-model="select"
+    :list="list"
+    style="height: 300px"
+    @change="showPopup = false"
+  />
+</van-popup>
+```
+
 ### 从接口动态获取数据
 ```html
 <xm-cascade v-model="select2" :loadFun="loadFun" />
