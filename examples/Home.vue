@@ -13,7 +13,7 @@
       <div class="demo-home-nav__title">{{ group.title }}</div>
       <div class="demo-home-nav__group">
         <a
-          v-for="(item, j) in group.items"
+          v-for="(item, j) in group.items.filter(x => x.hide !== true)"
           :key="j"
           class="demo-home-nav__block"
           href="javascript:;"
