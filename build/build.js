@@ -30,6 +30,7 @@ if (processComponents.length) {
   const jsArr = getFixed().concat(processComponents)
   consola.info(`共 ${jsArr.length} 个组件待处理`)
 
+  // console.log(processComponents)
   buildComponent(jsArr).then(() => genStyle(processComponents)).then(() => {
     consola.success('全部完成')
   })

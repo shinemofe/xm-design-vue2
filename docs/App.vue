@@ -31,7 +31,7 @@
       >
         <div class="van-doc-nav__title">{{ item.title }}</div>
         <div
-          v-for="(child, j) in item.items"
+          v-for="(child, j) in item.items.filter(x => x.hide !== true)"
           :key="j"
           class="van-doc-nav__item"
         >

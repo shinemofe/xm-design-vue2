@@ -11,6 +11,16 @@ const routes = [
   }
 ]
 
+const originalPush = Router.prototype.push
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => {
+    if (err.name !== 'NavigationDuplicated') {
+      throw err
+    }
+    return err
+  })
+}
+
 catelogs.forEach(it => {
   it.items.forEach(cate => {
     if (!cate.md) {

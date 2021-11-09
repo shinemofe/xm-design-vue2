@@ -37,6 +37,11 @@ module.exports = {
         {
           path: 'van-cell',
           title: 'Cell 单元格'
+        },
+        {
+          path: 'van-icon',
+          title: 'Icon 图标',
+          hide: true
         }
       ]
     },
@@ -71,6 +76,18 @@ module.exports = {
         {
           path: 'van-checkbox',
           title: 'Checkbox 复选框'
+        },
+        {
+          path: 'van-radio',
+          title: 'Radio 单选'
+        },
+        {
+          path: 'van-switch',
+          title: 'Switch 开关'
+        },
+        {
+          path: 'xm-tick',
+          title: 'Tick 勾选'
         }
       ]
     },

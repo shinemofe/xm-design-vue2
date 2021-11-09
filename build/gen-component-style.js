@@ -18,13 +18,12 @@ function dependency (file) {
     directory: pkg,
     filter: path => path.indexOf('node_modules') === -1
   })
-
   const res = []
   getDepName(tree, res)
-  return res.map(x => x.replace(pkg, '').substr(1).split('/')[0])
+  return res.map(x => x.replace(pkg, '').replace(es, '').substr(1).split('/')[0])
 }
 
-module.exports = ({ file, name, vant, style }) => {
+module.exports = ({ file, file2, name, vant, style }) => {
   let content = null
   if (vant) {
     // 处理 less 依赖
@@ -46,7 +45,7 @@ module.exports = ({ file, name, vant, style }) => {
       content.push('require(\'../index.css\')')
     }
   } else {
-    const deps = dependency(file)
+    const deps = dependency(file2)
     if (deps.length === 0) {
       deps.push(name)
     }

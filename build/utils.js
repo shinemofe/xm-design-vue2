@@ -17,6 +17,7 @@ const utils = {
           components.push({
             dir,
             file: path.join(dir, 'index.jsx'),
+            file2: path.join(es, item.path, 'index.js'),
             style: path.join(dir, 'index.less'),
             style2: path.join(es, item.path, 'index.css'),
             name: item.path,
