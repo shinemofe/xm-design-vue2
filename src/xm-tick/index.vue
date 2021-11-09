@@ -60,15 +60,15 @@ export default componentWrap('xm-tick', {
     handleSelect (item) {
       if (!this.multiple) {
         this.local = [item]
-        return
-      }
-      const index = this.local.findIndex(x => x === item)
-      if (index > -1) {
-        this.local.splice(index, 1)
       } else {
-        this.local.push(item)
+        const index = this.local.findIndex(x => x === item)
+        if (index > -1) {
+          this.local.splice(index, 1)
+        } else {
+          this.local.push(item)
+        }
       }
-      this.$emit('change', this.multiple ? this.local.slice() : this.local[0])
+      this.$emit('input', this.multiple ? this.local.slice() : this.local[0])
     }
   }
 })
