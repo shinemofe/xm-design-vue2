@@ -63,6 +63,10 @@ module.exports = {
         {
           path: 'xm-table',
           title: 'Table 表格'
+        },
+        {
+          path: 'van-badge',
+          title: 'Badge 气泡'
         }
       ]
     },
@@ -128,12 +132,12 @@ module.exports = {
           title: 'Tab 导航'
         }
       ]
-    },
-    {
-      title: '通用业务组件',
-      items: [
-      ]
     }
+    // {
+    //   title: '通用业务组件',
+    //   items: [
+    //   ]
+    // }
   ])
 }
 
