@@ -107,6 +107,10 @@ module.exports = {
           title: 'Dialog 对话框'
         },
         {
+          path: 'xm-dialog-guide',
+          title: 'DialogGuide 引导对话框'
+        },
+        {
           path: 'van-toast',
           title: 'Toast 提示'
         },

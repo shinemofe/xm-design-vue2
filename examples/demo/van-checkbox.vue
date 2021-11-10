@@ -12,21 +12,21 @@
       </van-checkbox-group>
       <van-button type="primary" @click="checkAll">全选</van-button>
       <van-button class="ml10" type="danger" @click="toggleAll">反选</van-button>
-
-      <p class="c-999 mtb10">搭配单元格使用 {{ v3 }}</p>
-      <van-checkbox-group v-model="v3">
-        <van-cell clickable title="复选框 a" @click="toggle(0)">
-          <template #right-icon>
-            <van-checkbox name="a" ref="checkbox0" />
-          </template>
-        </van-cell>
-        <van-cell clickable title="复选框 b" @click="toggle(1)">
-          <template #right-icon>
-            <van-checkbox name="b" ref="checkbox1" />
-          </template>
-        </van-cell>
-      </van-checkbox-group>
     </div>
+
+    <p class="c-999 m10">搭配单元格使用 {{ v3 }}</p>
+    <van-checkbox-group v-model="v3">
+      <van-cell clickable title="复选框 a" @click="toggle(0)">
+        <template #right-icon>
+          <van-checkbox name="a" ref="checkbox0" />
+        </template>
+      </van-cell>
+      <van-cell clickable title="复选框 b" @click="toggle(1)">
+        <template #right-icon>
+          <van-checkbox name="b" ref="checkbox1" />
+        </template>
+      </van-cell>
+    </van-checkbox-group>
   </layout>
 </template>
 

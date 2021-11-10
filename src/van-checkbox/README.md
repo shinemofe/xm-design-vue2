@@ -15,6 +15,16 @@ Vue.use(VanCheckbox)
 
 ```html
 <van-checkbox v-model="v1">复选框</van-checkbox>
+
+<script >
+  export default {
+    data () {
+      return {
+        v1: true
+      }
+    },
+  }
+</script>
 ```
 
 ### 复选框组
@@ -33,6 +43,12 @@ Vue.use(VanCheckbox)
 
 <script>
 export default {
+  data () {
+    return {
+      v2: []
+    }
+  },
+  
   methods: {
     checkAll() {
       this.$refs.checkboxGroup.toggleAll(true)
@@ -63,6 +79,12 @@ export default {
 
 <script>
 export default {
+  data () {
+    return {
+      v3: []
+    }
+  },
+  
   methods: {
     toggle (i) {
       this.$refs[`checkbox${i}`].toggle()

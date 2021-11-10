@@ -12,6 +12,12 @@ Vue.use(VanToast)
 
 ### 默认用法
 
-```html
-<van-toast ></van-toast>
+```js
+this.$toast('提示文案')
+this.$toast.loading({
+  loading: '提示文案',
+  forbidClick: true
+})
+this.$toast.success('提示文案')
+this.$toast.fail('提示文案')
 ```
