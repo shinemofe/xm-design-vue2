@@ -99,6 +99,10 @@ module.exports = {
       title: '交互反馈组件',
       items: [
         {
+          path: 'van-loading',
+          title: 'Loading 加载'
+        },
+        {
           path: 'van-dialog',
           title: 'Dialog 对话框'
         },
