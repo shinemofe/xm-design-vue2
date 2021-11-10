@@ -44,6 +44,17 @@ export default {
 </script>
 ```
 
+### 禁用
+
+```html
+<xm-tick 
+  v-model="select2" 
+  :list="list" 
+  :disabled="[1]" 
+  multiple 
+/>
+```
+
 ## API
 
 ### Props
@@ -51,6 +62,7 @@ export default {
 名称|类型|说明
 ----|----|----
 list|`Array<string>`|列表
+disabled|`Array<number>`|禁用的索引
 value|`string`\|`string[]`|当前选中
 multiple|`boolean`|是否多选
 

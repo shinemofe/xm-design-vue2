@@ -8,6 +8,9 @@
       <xm-tick v-model="select2" :list="list" multiple />
     </van-cell-group>
     <p class="plr10 c-999">数据：{{ select2 }}</p>
+    <van-cell-group title="禁用">
+      <xm-tick v-model="select2" :list="list" :disabled="[1]" multiple />
+    </van-cell-group>
     <van-cell-group title="结合 Popup 使用">
       <van-cell title="请选择" is-link @click="show = true" />
     </van-cell-group>
