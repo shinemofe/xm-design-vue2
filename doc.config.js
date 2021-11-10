@@ -103,6 +103,10 @@ module.exports = {
           title: 'Loading 加载'
         },
         {
+          path: 'van-toast',
+          title: 'Toast 提示'
+        },
+        {
           path: 'van-dialog',
           title: 'Dialog 对话框'
         },
@@ -111,8 +115,8 @@ module.exports = {
           title: 'DialogGuide 引导对话框'
         },
         {
-          path: 'van-toast',
-          title: 'Toast 提示'
+          path: 'xm-dialog-activity',
+          title: 'DialogActivity 活动弹窗'
         },
         {
           path: 'van-popup',

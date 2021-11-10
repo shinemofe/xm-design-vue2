@@ -16,7 +16,7 @@
       </div>
     </div>
     <div style="padding: 0 15px 15px 15px">
-      <van-button type="primary" block @click="$emit('click')">{{ buttonText }}</van-button>
+      <van-button type="primary" block @click="$emit('input', false),$emit('click')">{{ buttonText }}</van-button>
     </div>
   </van-dialog>
 </template>
