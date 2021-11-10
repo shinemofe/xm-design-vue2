@@ -13,8 +13,22 @@ Vue.use(VanDialog)
 ### 默认用法
 
 ```js
-this.$dialog.alert({ message: '对话框消息' })
-VanDialog.alert({ message: '对话框消息' })
+// 提示
+this.$dialog.alert({ message: '我是提示语', title: '标题' })
+// 确认
+this.$dialog.confirm({ message: '我是提示语', title: '标题' })
+// 异步关闭
+this.$dialog.confirm({
+  message: '我是提示语',
+  title: '标题',
+  beforeClose(action, done) {
+    if (action === 'confirm') {
+      setTimeout(done, 1000)
+    } else {
+      done()
+    }
+  }
+})
 ```
 
 ### 组件调用

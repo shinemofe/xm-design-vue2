@@ -1,8 +1,15 @@
 <template>
   <layout title="Dialog">
-    <p class="c-999 m10">示例</p>
+    <p class="c-999 m10">基础用法</p>
     <div>
-      <van-cell title="组件调用" is-link @click="handleShow" />
+      <van-cell title="提示" is-link @click="handleShow(1)" />
+      <van-cell title="确认" is-link @click="handleShow(2)" />
+      <van-cell title="异步关闭" is-link @click="handleShow(3)" />
+    </div>
+
+    <p class="c-999 m10">组件调用</p>
+    <div>
+      <van-cell title="组件调用" is-link @click="handleShow(4)" />
     </div>
 
     <van-dialog
@@ -37,14 +44,31 @@ export default {
     }
   },
 
-  mounted () {
-    // this.$dialog.alert({ message: '111' })
-    // console.log(this.$dialog)
-  },
-
   methods: {
-    handleShow () {
-      this.show = true
+    handleShow (type) {
+      switch (type) {
+        case 1: {
+          this.$dialog.alert({ message: '我是提示语', title: '标题' })
+        } break
+        case 2: {
+          this.$dialog.confirm({ message: '我是提示语', title: '标题' })
+        } break
+        case 3: {
+          this.$dialog.confirm({
+            message: '我是提示语',
+            title: '标题',
+            beforeClose(action, done) {
+              if (action === 'confirm') {
+                setTimeout(done, 1000)
+              } else {
+                done()
+              }
+            }
+          })
+        } break
+        default:
+          this.show = true
+      }
     }
   }
 }
