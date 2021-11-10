@@ -128,12 +128,12 @@ module.exports = {
           title: 'Tab 导航'
         }
       ]
+    },
+    {
+      title: '通用业务组件',
+      items: [
+      ]
     }
-    // {
-    //   title: '通用业务组件',
-    //   items: [
-    //   ]
-    // }
   ])
 }
 
