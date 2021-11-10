@@ -63,6 +63,10 @@ module.exports = {
         {
           path: 'xm-table',
           title: 'Table 表格'
+        },
+        {
+          path: 'van-tag',
+          title: 'Tag 标签'
         }
       ]
     },
