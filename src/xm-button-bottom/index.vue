@@ -61,12 +61,6 @@ export default componentWrap('xm-button-bottom', {
       type: Function,
       default: (val) => console.log('val: ', val)
     }
-  },
-
-  created () {
-  },
-
-  methods: {
   }
 })
 </script>
@@ -104,9 +98,6 @@ export default componentWrap('xm-button-bottom', {
     border-radius: 5px;
     box-sizing: border-box;
     padding: 10px;
-  }
-  &--unfit {
-    padding-bottom: 0;
   }
 }
 </style>

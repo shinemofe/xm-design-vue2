@@ -7,67 +7,19 @@
       </div>
       <div class="van-cell">
         <div class="van-cell__title"><span>primary 类型</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--primary">标签</span></div>
+        <div class="van-cell__value"><van-tag type="primary">标签</van-tag></div>
       </div>
       <div class="van-cell">
         <div class="van-cell__title"><span>success 类型</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--success">标签</span></div>
+        <div class="van-cell__value"><van-tag type="success">标签</van-tag></div>
       </div>
       <div class="van-cell">
         <div class="van-cell__title"><span>danger 类型</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--danger">标签</span></div>
+        <div class="van-cell__value"><van-tag type="danger">标签</van-tag></div>
       </div>
       <div class="van-cell">
         <div class="van-cell__title"><span>warning 类型</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--warning">标签</span></div>
-      </div>
-    </div>
-    <div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>空心样式</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--plain van-tag--primary">标签</span></div>
-      </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>圆角样式</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--round van-tag--primary">标签</span></div>
-      </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>标记样式</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--mark van-tag--primary">标签</span></div>
-      </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>可关闭标签</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--medium van-tag--primary" name="van-fade">
-          标签
-        <i class="van-icon van-icon-cross van-tag__close"><!----></i></span></div>
-      </div>
-    </div>
-    <div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>小号标签</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--primary">标签</span></div>
-      </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>中号标签</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--medium van-tag--primary">标签</span></div>
-      </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>大号标签</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--large van-tag--primary">标签</span></div>
-      </div>
-    </div>
-    <div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>背景颜色</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--default" style="background: rgb(114, 50, 221);">标签</span></div>
-      </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>文字颜色</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--default" style="color: rgb(173, 0, 0); background: rgb(255, 225, 225);">标签</span></div>
-      </div>
-      <div class="van-cell">
-        <div class="van-cell__title"><span>空心颜色</span></div>
-        <div class="van-cell__value"><span class="van-tag van-tag--plain van-tag--default" style="color: rgb(114, 50, 221); border-color: #7232dd;">标签</span></div>
+        <div class="van-cell__value"><van-tag type="warning">标签</van-tag></div>
       </div>
     </div>
   </layout>
@@ -75,6 +27,7 @@
 
 <script>
 import Layout from '../Layout'
+import '../../src/van-tag/index.less'
 
 export default {
   name: 'demo-van-tag',
