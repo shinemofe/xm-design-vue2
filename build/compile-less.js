@@ -40,7 +40,7 @@ module.exports = async function compile (filePath, name, code, vant) {
   }
   // }
 
-  let source = code || readFileSync(filePath, 'utf-8')
+  let source = code || (fs.pathExistsSync(filePath) ? readFileSync(filePath, 'utf-8') : '')
   if (vant) {
     // 处理变量文件
     const varPath = filePath.replace('index.less', 'var.less')

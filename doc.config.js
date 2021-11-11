@@ -97,6 +97,14 @@ module.exports = {
         {
           path: 'xm-tick',
           title: 'Tick 勾选'
+        },
+        {
+          path: 'van-slider',
+          title: 'Slider 滑块'
+        },
+        {
+          path: 'van-rate',
+          title: 'Rate 评分'
         }
       ]
     },
@@ -135,6 +143,10 @@ module.exports = {
         //   path: 'xm-select',
         //   title: 'Select 选择'
         // },
+        {
+          path: 'van-action-sheet',
+          title: 'ActionSheet 动作面板'
+        },
         {
           path: 'xm-cascade',
           title: 'Cascade 级联'

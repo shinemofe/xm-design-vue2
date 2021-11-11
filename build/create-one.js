@@ -155,10 +155,18 @@ async function inject () {
       await fs.outputFile(componentDir('index.jsx'), jsxTpl.replace(/%name%/g, name))
     }
     await fs.outputFile(componentDir(`index.less${type === 'vant' ? '.js' : ''}`), jsxLess(name, type))
+    await fs.outputFile(componentDir('index.less'), '')
   }
   await fs.outputFile(componentDir('README.md'), mdTpl(name))
+  await fs.outputFile(componentDir('var.less'), '')
   await fs.outputFile(demoDir(`${name}.vue`), demoTpl(name))
   consola.success(`组件 ${chalk.yellow(name)} 创建成功`)
+
+  return name
 }
 
-inject()
+inject().then(name => {
+  // xmi.theme.less 添加变量引用
+  const themePath = path.join(__dirname, '../xmi.theme.less')
+  fs.outputFileSync(themePath, fs.readFileSync(themePath, 'utf8') + `\n@import 'src/${name}/var.less';`)
+})
