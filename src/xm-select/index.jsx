@@ -1,14 +1,10 @@
 import { componentWrap } from '../utils/util'
-// import { Popup, Picker } from 'vant'
-// import {  } from 'vue'
 import Popup from '../van-popup'
 import Picker from '../van-picker'
 
 const icon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAWlBMVEUAAACSkraAn5+fn5+fn5+OnJyUoaGZmaaSm6SVlZ6UnKWYnKWVmqOWm6SVm6OWm6OTnKSXnKOTnaSVnKSTnKOUnKWUnKOUm6SUm6WUnKWUm6SUmqSUm6SUm6SJN3zoAAAAHXRSTlMABwgIEBITFBwdPj5bXF5mamxtiYufoMrKy+jp+mB6leEAAABnSURBVBgZzcHZDoIwAEXBw6ZsiiA7vf//m5KGIKU8G2f4U3H59DxuQKULLyAY5BkCVumskznFyo0cJmdTy1Gz63TQ8RWO2o0hB9mizZLhKIwsU3DSyGrw9Fr1+KJJmiIu3N9twk99AP4NEop5S/esAAAAAElFTkSuQmCC'
 
 export default componentWrap('xm-select', {
-  name: 'xm-select',
-
   props: {
     title: {
       type: String,

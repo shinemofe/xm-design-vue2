@@ -125,14 +125,14 @@ export default componentWrap('xm-cascade', {
           // console.log(values)
           this.oldMultipleSelected = this.multipleSelected.slice()
           this.multipleSelected = values.slice()
-            // values.forEach(value => {
-            //   const index = this.multipleSelected.findIndex(x => x === value)
-            //   if (index === -1) {
-            //     this.multipleSelected.push(value)
-            //   } else {
-            //     this.multipleSelected.splice(index, 1)
-            //   }
-            // })
+          // values.forEach(value => {
+          //   const index = this.multipleSelected.findIndex(x => x === value)
+          //   if (index === -1) {
+          //     this.multipleSelected.push(value)
+          //   } else {
+          //     this.multipleSelected.splice(index, 1)
+          //   }
+          // })
           // console.log([...this.oldMultipleSelected, ...this.multipleSelected])
         }
         this.handleSelectNext(this.getItemByName(values.slice().pop()), cb)
