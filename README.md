@@ -22,9 +22,7 @@ npm run create
 组件类型 3 种：
 
 - sfc 语法组件
-111
 - 覆盖 vant 组件
-
 - jsx 语法组件
 
 主题样式变量文件 [xmi.theme.less](./xmi.theme.less)
