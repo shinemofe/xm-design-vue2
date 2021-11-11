@@ -12,7 +12,6 @@
 <script>
 import Layout from '../Layout'
 import '../../src/van-dropdown-menu/index.less'
-import '../../src/van-dropdown-menu/var.less'
 
 export default {
   name: 'demo-van-dropdown-menu',
