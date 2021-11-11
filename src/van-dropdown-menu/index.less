@@ -1,0 +1,49 @@
+.van-dropdown-menu {
+  &__item {
+    flex: 1 1 auto;
+  }
+  &__bar {
+    .van-dropdown-menu__item:not(:last-child) {
+      position: relative;
+      &::after {
+        content: '';
+        width: 1px;
+        right: 0;
+        height: 50%;
+        background: @gray-1;
+        position: absolute;
+        display: inline-block;
+      }
+    }
+  }
+  .van-dropdown-item__option--active {
+    color: @main;
+    .van-dropdown-item__icon {
+      color: @main;
+    }
+  }
+  &__title {
+    &--active {
+      color: @main;
+    }
+    &::after {
+      position: absolute;
+      top: 50%;
+      margin-top: -5px;
+      right: -5px;
+      border:none;
+      -webkit-transform: rotate(90deg);
+      transform: rotate(90deg);
+      font: normal normal normal 12px/1 'vant-icon';
+      opacity: 0.8;
+      content: '\e660';
+    }
+    &--down {
+      &::after {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg);
+      }
+    }
+  }
+  
+}

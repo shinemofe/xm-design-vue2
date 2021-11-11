@@ -121,6 +121,10 @@ module.exports = {
         {
           path: 'xm-cascade',
           title: 'Cascade 级联'
+        },
+        {
+          path: 'van-dropdown-menu',
+          title: 'DropdownMenu 筛选拦'
         }
       ]
     },
