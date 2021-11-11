@@ -76,6 +76,10 @@ module.exports = {
         {
           path: 'van-tag',
           title: 'Tag 标签'
+        },
+        {
+          path: 'van-empty',
+          title: 'Empty 空状态'
         }
       ]
     },
@@ -109,6 +113,10 @@ module.exports = {
         {
           path: 'van-rate',
           title: 'Rate 评分'
+        },
+        {
+          path: 'van-search',
+          title: 'Search 搜索'
         }
       ]
     },
@@ -159,6 +167,10 @@ module.exports = {
         {
           path: 'van-tabs',
           title: 'Tab 导航'
+        },
+        {
+          path: 'van-tabbar',
+          title: 'Tabbar 标签栏'
         }
       ]
     },
