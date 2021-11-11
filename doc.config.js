@@ -72,6 +72,10 @@ module.exports = {
         {
           path: 'van-badge',
           title: 'Badge 气泡'
+        },
+        {
+          path: 'van-tag',
+          title: 'Tag 标签'
         }
       ]
     },
@@ -124,14 +128,6 @@ module.exports = {
           title: 'Dialog 对话框'
         },
         {
-          path: 'xm-dialog-guide',
-          title: 'DialogGuide 引导对话框'
-        },
-        {
-          path: 'xm-dialog-activity',
-          title: 'DialogActivity 活动弹窗'
-        },
-        {
           path: 'van-popup',
           title: 'Popup 弹出层'
         },
@@ -150,6 +146,10 @@ module.exports = {
         {
           path: 'xm-cascade',
           title: 'Cascade 级联'
+        },
+        {
+          path: 'van-dropdown-menu',
+          title: 'DropdownMenu 筛选拦'
         }
       ]
     },
@@ -161,12 +161,24 @@ module.exports = {
           title: 'Tab 导航'
         }
       ]
+    },
+    {
+      title: '通用业务组件',
+      items: [
+        {
+          path: 'xm-button-bottom',
+          title: '置底按钮'
+        },
+        {
+          path: 'xm-dialog-guide',
+          title: 'DialogGuide 引导对话框'
+        },
+        {
+          path: 'xm-dialog-activity',
+          title: 'DialogActivity 活动弹窗'
+        },
+      ]
     }
-    // {
-    //   title: '通用业务组件',
-    //   items: [
-    //   ]
-    // }
   ])
 }
 

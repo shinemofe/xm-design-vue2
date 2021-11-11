@@ -1,0 +1,46 @@
+@red: #ee0a24;
+@blue: #1989fa;
+@orange: #ff976a;
+@green: #07c160;
+
+.van-tag {
+  &--default {
+    background-color: @gray-1;
+    color: @gray-5;
+    &.van-tag--plain {
+      color: @gray-5;
+    }
+  }
+
+  &--danger {
+    background-color: fade(@red, 15%);
+    color: @red;
+    &.van-tag--plain {
+      color: @red;
+    }
+  }
+
+  &--primary {
+    background-color: fade(@blue, 15%);
+    color: @blue;
+    &.van-tag--plain {
+      color: @blue;
+    }
+  }
+
+  &--success {
+    background-color: fade(@green, 15%);
+    color: @green;
+    &.van-tag--plain {
+      color: @green;
+    }
+  }
+
+  &--warning {
+    background-color: fade(@orange, 15%);
+    color: @orange;
+    &.van-tag--plain {
+      color: @orange;
+    }
+  }
+}
