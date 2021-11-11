@@ -167,7 +167,7 @@ module.exports = {
       items: [
         {
           path: 'xm-button-bottom',
-          title: '置底按钮'
+          title: 'ButtonBottom 置底按钮'
         },
         {
           path: 'xm-dialog-guide',
@@ -176,7 +176,7 @@ module.exports = {
         {
           path: 'xm-dialog-activity',
           title: 'DialogActivity 活动弹窗'
-        },
+        }
       ]
     }
   ])

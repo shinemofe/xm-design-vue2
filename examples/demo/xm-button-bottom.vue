@@ -4,10 +4,10 @@
       :onSelect="onSelect"
       :actions="actions"
       submitText="确定"
-      @onSubmit="onSubmit"
-      @onCancel="onCancel"
+      @submit="onSubmit"
+      @cancel="onCancel"
       cancel
-      select
+      :select="false"
     />
   </layout>
 </template>

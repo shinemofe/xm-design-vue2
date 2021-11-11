@@ -1,10 +1,10 @@
 <template>
   <div class="xm-button-bottom">
     <div class="xm-button-bottom-button">
-      <van-button type='primary' @click="$emit('onSubmit')" block>{{submitText}}</van-button>
+      <van-button type='primary' @click="$emit('submit')" block>{{submitText}}</van-button>
     </div>
     <div class="xm-button-bottom-button" v-if="cancel">
-      <van-button @click="$emit('onCancel');" block>取消</van-button>
+      <van-button @click="$emit('cancel');" block>取消</van-button>
     </div>
     <div class="xm-button-bottom-box" v-if="select">
       <van-popover
