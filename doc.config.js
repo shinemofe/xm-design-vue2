@@ -140,6 +140,10 @@ module.exports = {
     {
       title: '通用业务组件',
       items: [
+        {
+          path: 'xm-button-bottom',
+          title: '置底按钮'
+        }
       ]
     }
   ])
