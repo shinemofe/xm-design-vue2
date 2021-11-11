@@ -1,7 +1,7 @@
 <template>
   <div class="xm-cascade">
     <div class="xm-cascade__bar">
-      <div ref="tab" class="xm-cascade__selected">
+      <div ref="tab" class="xm-cascade__selected van-hairline--bottom">
         <div
           v-for="(item, i) in selected"
           :key="item.id"
@@ -19,17 +19,23 @@
       </div>
     </div>
     <div class="xm-cascade__list">
-      <div
-        v-for="item in currentList"
-        :key="item.id"
-        class="xm-cascade__item"
-        :class="{
-          active: isActiveItem(item)
-        }"
-        @click="handleSelect(item)"
-      >
-        <span>{{ item.name }}</span>
-      </div>
+<!--      <div-->
+<!--        v-for="item in currentList"-->
+<!--        :key="item.id"-->
+<!--        class="xm-cascade__item"-->
+<!--        :class="{-->
+<!--          active: isActiveItem(item)-->
+<!--        }"-->
+<!--        @click="handleSelect(item)"-->
+<!--      >-->
+<!--        <span>{{ item.name }}</span>-->
+<!--      </div>-->
+      <xm-tick
+        ref="tick"
+        :list="currentListMap"
+        :multiple="multiple"
+        @input="handleSelectValue"
+      />
       <div v-if="loadingData" class="xm-cascade__empty">
         <p>加载中...</p>
       </div>
@@ -43,10 +49,12 @@
 <script>
 import { componentWrap } from '../utils/util'
 import VanButton from '../van-button'
+import XmTick from '../xm-tick'
 
 export default componentWrap('xm-cascade', {
   components: {
-    VanButton
+    VanButton,
+    XmTick
   },
 
   data () {
@@ -57,7 +65,8 @@ export default componentWrap('xm-cascade', {
       selected: [],
       loadingData: false,
       cacheMap: {},
-      multipleSelected: []
+      multipleSelected: [],
+      oldMultipleSelected: []
     }
   },
 
@@ -87,6 +96,12 @@ export default componentWrap('xm-cascade', {
     }
   },
 
+  computed: {
+    currentListMap () {
+      return this.currentList.map(x => x.name)
+    }
+  },
+
   created () {
     this.init()
   },
@@ -99,7 +114,34 @@ export default componentWrap('xm-cascade', {
       this.selected = []
     },
 
-    async handleSelect (item) {
+    getItemByName (name) {
+      return this.currentList.find(x => x.name === name)
+    },
+
+    // todo 选择多级
+    handleSelectValue (values) {
+      if (this.multiple) {
+        const cb = () => {
+          // console.log(values)
+          this.oldMultipleSelected = this.multipleSelected.slice()
+          this.multipleSelected = values.slice()
+          // values.forEach(value => {
+          //   const index = this.multipleSelected.findIndex(x => x === value)
+          //   if (index === -1) {
+          //     this.multipleSelected.push(value)
+          //   } else {
+          //     this.multipleSelected.splice(index, 1)
+          //   }
+          // })
+          // console.log([...this.oldMultipleSelected, ...this.multipleSelected])
+        }
+        this.handleSelectNext(this.getItemByName(values.slice().pop()), cb)
+      } else {
+        this.handleSelectNext(this.getItemByName(values))
+      }
+    },
+
+    async handleSelectNext (item, callback) {
       const { id, name, children = [] } = item
       this.currentSelected = { id, name, children }
       if (this.selected.every(x => x.id !== id)) {
@@ -113,13 +155,19 @@ export default componentWrap('xm-cascade', {
       const noNext = !list || !list.length
       if (noNext) {
         if (this.multiple) {
+          // 重置头部选项
           this.selected.pop()
+          this.level -= 1
+          callback && callback()
         } else {
           this.currentList = []
+          this.singleConfirm()
         }
-        this.confirm()
       } else {
         this.currentList = list
+        if (this.multiple) {
+          this.$refs.tick.local = []
+        }
       }
 
       this.scrollRight()
@@ -135,24 +183,14 @@ export default componentWrap('xm-cascade', {
       })
     },
 
-    confirm () {
-      if (this.multiple) {
-        const { id, name } = this.currentSelected
-        const index = this.multipleSelected.findIndex(x => x.id === id)
-        if (index === -1) {
-          this.multipleSelected.push({ id, name, path: this.selected.map(x => ({ id: x.id, name: x.name })) })
-        } else {
-          this.multipleSelected.splice(index, 1)
-        }
-      } else {
-        const list = this.selected.slice()
-        const data = list.pop()
-        data.path = list.map(x => ({ id: x.id, name: x.name }))
-        this.$emit('input', data)
-        this.$emit('change', data)
-        if (this.needReset) {
-          this.init()
-        }
+    singleConfirm () {
+      const list = this.selected.slice()
+      const data = list.pop()
+      const item = { id: data.id, name: data.name }
+      this.$emit('input', item)
+      this.$emit('change', item)
+      if (this.needReset) {
+        this.init()
       }
     },
 
@@ -171,7 +209,7 @@ export default componentWrap('xm-cascade', {
       } else {
         const item = this.selected[changeLevel - 1]
         this.selected = this.selected.slice(0, changeLevel - 1)
-        this.handleSelect(item)
+        this.handleSelectNext(item)
       }
     },
 
@@ -190,18 +228,17 @@ export default componentWrap('xm-cascade', {
       this.cacheMap[cacheKey] = res
       // 缓存数据
       return res
-    },
-
-    isActiveItem (item) {
-      if (!this.currentSelected) {
-        return false
-      }
-
-      if (this.multiple) {
-        return this.multipleSelected.find(x => x.id === item.id)
-      }
-      return this.selected.find(x => x.id === item.id)
     }
+    // isActiveItem (item) {
+    //   if (!this.currentSelected) {
+    //     return false
+    //   }
+    //
+    //   if (this.multiple) {
+    //     return this.multipleSelected.find(x => x.id === item.id)
+    //   }
+    //   return this.selected.find(x => x.id === item.id)
+    // }
   }
 })
 </script>
@@ -238,6 +275,7 @@ export default componentWrap('xm-cascade', {
         font-weight: 500;
       }
       &.active {
+        color: @main;
         &:after {
           position: absolute;
           content: '';
@@ -245,7 +283,7 @@ export default componentWrap('xm-cascade', {
           bottom: 0;
           left: 0;
           right: 0;
-          height: 2px;
+          height: 3px;
           background: @main;
         }
       }

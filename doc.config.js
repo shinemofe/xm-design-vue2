@@ -24,6 +24,11 @@ module.exports = {
           path: 'var',
           title: '主题定制',
           md: true
+        },
+        {
+          path: 'dev',
+          title: '组件库维护指南',
+          md: true
         }
       ]
     },
@@ -65,6 +70,10 @@ module.exports = {
           title: 'Table 表格'
         },
         {
+          path: 'van-badge',
+          title: 'Badge 气泡'
+        },
+        {
           path: 'van-tag',
           title: 'Tag 标签'
         }
@@ -92,6 +101,14 @@ module.exports = {
         {
           path: 'xm-tick',
           title: 'Tick 勾选'
+        },
+        {
+          path: 'van-slider',
+          title: 'Slider 滑块'
+        },
+        {
+          path: 'van-rate',
+          title: 'Rate 评分'
         }
       ]
     },
@@ -99,12 +116,16 @@ module.exports = {
       title: '交互反馈组件',
       items: [
         {
-          path: 'van-dialog',
-          title: 'Dialog 对话框'
+          path: 'van-loading',
+          title: 'Loading 加载'
         },
         {
           path: 'van-toast',
           title: 'Toast 提示'
+        },
+        {
+          path: 'van-dialog',
+          title: 'Dialog 对话框'
         },
         {
           path: 'van-popup',
@@ -118,6 +139,10 @@ module.exports = {
         //   path: 'xm-select',
         //   title: 'Select 选择'
         // },
+        {
+          path: 'van-action-sheet',
+          title: 'ActionSheet 动作面板'
+        },
         {
           path: 'xm-cascade',
           title: 'Cascade 级联'
@@ -143,7 +168,15 @@ module.exports = {
         {
           path: 'xm-button-bottom',
           title: '置底按钮'
-        }
+        },
+        {
+          path: 'xm-dialog-guide',
+          title: 'DialogGuide 引导对话框'
+        },
+        {
+          path: 'xm-dialog-activity',
+          title: 'DialogActivity 活动弹窗'
+        },
       ]
     }
   ])

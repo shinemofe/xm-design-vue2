@@ -5,7 +5,8 @@ import './vant.copy.css'
 import { tconModules, catelogs } from '../doc.config'
 import 'tcon/dist/reset.css'
 
-// 全量引入组件
+// 全量引入组件 JS
+// 样式文件需要手动在 demo 中引入
 catelogs.forEach(it => {
   it.items.filter(x => !x.md).forEach(com => {
     if (com.vant) {
