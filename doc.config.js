@@ -24,6 +24,11 @@ module.exports = {
           path: 'var',
           title: '主题定制',
           md: true
+        },
+        {
+          path: 'dev',
+          title: '组件库维护指南',
+          md: true
         }
       ]
     },
