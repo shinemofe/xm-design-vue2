@@ -48,7 +48,7 @@ module.exports = async function compile (filePath, name, code, vant) {
       await fs.copy(varPath, varPath.replace('/src/', '/es/'))
     }
     // vant 利用变量将 less 转化为 css
-    source = `@import '~vant/es/${name.split('-')[1]}/index.less';\n${source}`
+    source = `@import '~vant/es/${name.split('-').slice(1).join('-')}/index.less';\n${source}`
   }
   // else {
   //   source = code || readFileSync(filePath, 'utf-8')

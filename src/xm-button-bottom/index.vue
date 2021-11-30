@@ -15,7 +15,7 @@
         @select="onSelect"
       >
         <template #reference>
-          <img src="../../examples/assets/threedot.png" style="width: 100%;height:100%;" alt="">
+          <img src="../../examples/assets/threedot.png" style="width: 100%;height:100%;" alt=""/>
         </template>
       </van-popover>
     </div>

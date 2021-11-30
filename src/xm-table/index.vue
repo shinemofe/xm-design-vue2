@@ -70,7 +70,7 @@
         }"
         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAMAAADXqc3KAAAAilBMVEUAAABcZnBaY2tcY2pgYG5cYmlTZmxeY21fZGlfZG5bYGpbZWpaY21eY21dYWtbZG1gZG1eYmtcYWpbY2xfY2xdYmpcYGlcYG1aY2tfY2tdZW1cZGxeYm5dZGxbY2taYmxaY21bYmxbY2xbYmxaYmxbYmxbYWxbYmxbYmtbYm1bYmxbYmxbYmxbYWwAzDYpAAAALnRSTlMAGR8kJScoMTMzNTU2Njc4ODk6Ozs8PT0+Pj9AQUJDrLLu7u/w8PHx8vLz9PX2NSEckwAAAHhJREFUGBnNwQsWQkAAQNHX/5+QkEo1DDOj/W+vOI6DLMC9jNVkRs9ySun5edBxK2JKq1dxp+VqxIbK+m0iGoERO2pbYUJqnk6PNA6J9qm4Sp5osaQ682NnuUOHneUOWFJ59LhKWvtE+/y56FSYkAGBKSIGzReM3RcQUwhzdp/LnAAAAABJRU5ErkJggg==" alt=""
         width="12px"
-      >
+      />
       <span>{{ moreText }}</span>
     </p>
   </div>
@@ -223,7 +223,7 @@ export default componentWrap('xm-table', {
 </script>
 
 <style lang="less">
-@import "var";
+//@import "var";
 .xm-table {
   position: relative;
   overflow: hidden;

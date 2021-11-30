@@ -30,7 +30,7 @@ module.exports = ({ file, file2, name, vant, style }) => {
     const source = readFileSync(`${style}.js`, 'utf8')
     content = source.split('\n')
       .filter(x => x.startsWith(`import 'vant/`))
-      .filter(x => x.indexOf(`vant/es/${name.split('-')[1]}`) === -1)
+      .filter(x => x.indexOf(`vant/es/${name.split('-').slice(1).join('-')}`) === -1)
       .map(x => x.replace(`import '`, 'require(\'') + ')')
       .map(x => {
         const depModuleName = 'van-' + x.replace('require(\'vant/es/', '').split('/')[0]
