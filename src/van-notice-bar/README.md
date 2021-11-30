@@ -13,7 +13,6 @@ Vue.use(VanNoticeBar)
 ### 默认用法
 
 ```html
-
 <van-notice-bar text="这是一段很长很长很长很长很长很长很长很长的文字。"></van-notice-bar>
 ```
 

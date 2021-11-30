@@ -60,5 +60,9 @@ export default {
   .van-notice-bar + .van-notice-bar {
     margin-top: 10px;
   }
+
+  .van-notice-bar {
+    border-radius: 5px;
+  }
 }
 </style>
