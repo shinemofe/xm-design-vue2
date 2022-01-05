@@ -4,11 +4,11 @@
       <div ref="tab" class="xm-cascade__selected van-hairline--bottom">
         <div
           v-for="(item, i) in selected"
-          :key="item.id"
+          :key="item[prop.value]"
           class="xm-cascade__selected-item"
           @click="handleChangeTab(i)"
         >
-          <span>{{ item.name }}</span>
+          <span>{{ item[prop.label] }}</span>
         </div>
         <div ref="tabIndicator" class="xm-cascade__selected-item active">
           <span>请选择</span>
@@ -93,6 +93,13 @@ export default componentWrap('xm-cascade', {
     needReset: {
       type: Boolean,
       default: true
+    },
+    prop: {
+      type: Object,
+      default: () => ({
+        label: 'text',
+        value: 'value'
+      })
     }
   },
 
@@ -115,7 +122,7 @@ export default componentWrap('xm-cascade', {
     },
 
     getItemByName (name) {
-      return this.currentList.find(x => x.name === name)
+      return this.currentList.find(x => x[this.prop.label] === name)
     },
 
     // todo 选择多级
@@ -142,13 +149,12 @@ export default componentWrap('xm-cascade', {
     },
 
     async handleSelectNext (item, callback) {
-      const { id, name, children = [] } = item
-      this.currentSelected = { id, name, children }
-      if (this.selected.every(x => x.id !== id)) {
+      this.currentSelected = item
+      if (this.selected.every(x => x[this.prop.value] !== item[this.prop.value])) {
         this.level = this.selected.push(this.currentSelected)
       }
 
-      let list = children
+      let list = item.children
       if (!this.list) {
         list = await this.handleGetListByFn()
       }
@@ -184,11 +190,15 @@ export default componentWrap('xm-cascade', {
     },
 
     singleConfirm () {
-      const list = this.selected.slice()
-      const data = list.pop()
-      const item = { id: data.id, name: data.name }
-      this.$emit('input', item)
-      this.$emit('change', item)
+      const list = this.selected.slice().map(x => ({
+        [this.prop.value]: x[this.prop.value],
+        [this.prop.label]: x[this.prop.label]
+      }))
+      console.log(JSON.stringify(list))
+      // const data = list.pop()
+      // const item = { [this.prop.value]: data[this.prop.value], [this.prop.label]: data[this.prop.label] }
+      this.$emit('input', list)
+      this.$emit('change', list)
       if (this.needReset) {
         this.init()
       }
@@ -214,31 +224,22 @@ export default componentWrap('xm-cascade', {
     },
 
     async handleGetListByFn () {
-      const { id = 0, name } = this.currentSelected || {}
-      const cacheKey = `cache${this.level}${id}`
+      // { id = 0, name }
+      const item = this.currentSelected || {}
+      const cacheKey = `cache${this.level}${item[this.prop.value]}`
       if (this.cacheMap[cacheKey]) {
         return this.cacheMap[cacheKey]
       }
 
       this.loadingData = true
       this.currentList = []
-      const res = await this.loadFun({ id, name }, this.level).finally(() => {
+      const res = await this.loadFun(item, this.level).finally(() => {
         this.loadingData = false
       })
       this.cacheMap[cacheKey] = res
       // 缓存数据
       return res
     }
-    // isActiveItem (item) {
-    //   if (!this.currentSelected) {
-    //     return false
-    //   }
-    //
-    //   if (this.multiple) {
-    //     return this.multipleSelected.find(x => x.id === item.id)
-    //   }
-    //   return this.selected.find(x => x.id === item.id)
-    // }
   }
 })
 </script>

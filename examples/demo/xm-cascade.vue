@@ -1,7 +1,7 @@
 <template>
   <layout title="XmCascade">
     <p class="plr15 ptb10 c-666">传入完整数据选择</p>
-    <xm-cascade v-model="select" :list="list" />
+    <xm-cascade v-model="select" :list="list" :prop="{ label: 'name', value: 'code' }" />
     <div class="p15 mb20">数据：{{ select }}</div>
 
     <p class="plr15 ptb10 c-666">配合 Popup 使用</p>
@@ -21,6 +21,7 @@
         v-model="select4"
         :list="list"
         style="height: 300px"
+        :prop="{ label: 'name', value: 'code' }"
         @input="showPopup = false"
       />
     </van-popup>
@@ -55,15 +56,15 @@ export default {
       showPopup: false,
       list: [
         {
-          id: 1,
+          code: 1,
           name: '湖北',
           children: [
             {
-              id: 11,
+              code: 11,
               name: '武汉',
               children: [
                 {
-                  id: 111,
+                  code: 111,
                   name: '江汉区'
                 }
               ]
@@ -71,57 +72,57 @@ export default {
           ]
         },
         {
-          id: 2,
+          code: 2,
           name: '浙江',
           children: [
             {
-              id: 21,
+              code: 21,
               name: '杭州',
               children: [
                 {
-                  id: 211,
+                  code: 211,
                   name: '西湖区',
                   children: [
                     {
-                      id: 2111,
+                      code: 2111,
                       name: '蒋村街道'
                     }
                   ]
                 },
                 {
-                  id: 212,
+                  code: 212,
                   name: '余杭区'
                 }
               ]
             },
             {
-              id: 22,
+              code: 22,
               name: '湖州'
             },
             {
-              id: 23,
+              code: 23,
               name: '嘉兴'
             }
           ]
         },
         {
-          id: 3,
+          code: 3,
           name: '1名称很长很长很长很长很长',
           children: [
             {
-              id: 31,
+              code: 31,
               name: '2名称很长很长很长很长很长',
               children: [
                 {
-                  id: 311,
+                  code: 311,
                   name: '3名称很长很长很长很长很长',
                   children: [
                     {
-                      id: 3111,
+                      code: 3111,
                       name: '4名称很长很长很长很长很长',
                       children: [
                         {
-                          id: 31111,
+                          code: 31111,
                           name: '5名称很长很长很长很长很长'
                         }
                       ]

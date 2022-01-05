@@ -26,7 +26,6 @@
 import { componentWrap } from '../utils/util'
 import VanButton from '../van-button'
 import VanPopover from 'vant/es/popover'
-import 'vant/es/popover/index.less'
 
 export default componentWrap('xm-button-bottom', {
   components: {
