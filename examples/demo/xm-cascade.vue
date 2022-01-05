@@ -1,7 +1,7 @@
 <template>
   <layout title="XmCascade">
     <p class="plr15 ptb10 c-666">传入完整数据选择</p>
-    <xm-cascade v-model="select" :list="list" :prop="{ label: 'name', value: 'code' }" />
+    <xm-cascade v-model="select" :list="list" :prop="{ label: 'text', value: 'code' }" />
     <div class="p15 mb20">数据：{{ select }}</div>
 
     <p class="plr15 ptb10 c-666">配合 Popup 使用</p>
@@ -21,7 +21,7 @@
         v-model="select4"
         :list="list"
         style="height: 300px"
-        :prop="{ label: 'name', value: 'code' }"
+        :prop="{ label: 'text', value: 'code' }"
         @input="showPopup = false"
       />
     </van-popup>
@@ -57,15 +57,15 @@ export default {
       list: [
         {
           code: 1,
-          name: '湖北',
+          text: '湖北',
           children: [
             {
               code: 11,
-              name: '武汉',
+              text: '武汉',
               children: [
                 {
                   code: 111,
-                  name: '江汉区'
+                  text: '江汉区'
                 }
               ]
             }
@@ -73,57 +73,57 @@ export default {
         },
         {
           code: 2,
-          name: '浙江',
+          text: '浙江',
           children: [
             {
               code: 21,
-              name: '杭州',
+              text: '杭州',
               children: [
                 {
                   code: 211,
-                  name: '西湖区',
+                  text: '西湖区',
                   children: [
                     {
                       code: 2111,
-                      name: '蒋村街道'
+                      text: '蒋村街道'
                     }
                   ]
                 },
                 {
                   code: 212,
-                  name: '余杭区'
+                  text: '余杭区'
                 }
               ]
             },
             {
               code: 22,
-              name: '湖州'
+              text: '湖州'
             },
             {
               code: 23,
-              name: '嘉兴'
+              text: '嘉兴'
             }
           ]
         },
         {
           code: 3,
-          name: '1名称很长很长很长很长很长',
+          text: '1名称很长很长很长很长很长',
           children: [
             {
               code: 31,
-              name: '2名称很长很长很长很长很长',
+              text: '2名称很长很长很长很长很长',
               children: [
                 {
                   code: 311,
-                  name: '3名称很长很长很长很长很长',
+                  text: '3名称很长很长很长很长很长',
                   children: [
                     {
                       code: 3111,
-                      name: '4名称很长很长很长很长很长',
+                      text: '4名称很长很长很长很长很长',
                       children: [
                         {
                           code: 31111,
-                          name: '5名称很长很长很长很长很长'
+                          text: '5名称很长很长很长很长很长'
                         }
                       ]
                     }

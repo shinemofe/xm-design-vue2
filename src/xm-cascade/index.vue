@@ -105,7 +105,7 @@ export default componentWrap('xm-cascade', {
 
   computed: {
     currentListMap () {
-      return this.currentList.map(x => x.name)
+      return this.currentList.map(x => x[this.prop.label])
     }
   },
 
@@ -194,7 +194,6 @@ export default componentWrap('xm-cascade', {
         [this.prop.value]: x[this.prop.value],
         [this.prop.label]: x[this.prop.label]
       }))
-      console.log(JSON.stringify(list))
       // const data = list.pop()
       // const item = { [this.prop.value]: data[this.prop.value], [this.prop.label]: data[this.prop.label] }
       this.$emit('input', list)

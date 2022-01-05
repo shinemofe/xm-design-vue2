@@ -70,11 +70,11 @@ export default componentWrap('xm-tick', {
     },
 
     local (val) {
-      console.log('local change', JSON.parse(JSON.stringify(val)))
+      // console.log('local change', JSON.parse(JSON.stringify(val)))
     },
 
     list (val) {
-      console.log('list change', JSON.parse(JSON.stringify(val)))
+      // console.log('list change', JSON.parse(JSON.stringify(val)))
       // this.local = []
     }
   },

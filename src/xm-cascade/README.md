@@ -146,6 +146,7 @@ value\|v-model|`Item` `Item[]`|-|选中的值，默认为 Item 对象，多选�
 list|`List`|null|嵌套的数据
 needReset|`boolean`|true|选择完成后是否重置选择面板
 loadFun|`(parent: Item, level: number) => Promise<List[]>`|`() => Promise.resolve([])`|通过接口返回当前一级的数据
+prop|`{ label: 'text', value: 'value' }`|-|属性选项
 
 > TIPS: 有些场景可以直接提供完整的嵌套的数据，那么直接使用 list 传入。大多数时候，每一级的数据是需要拉接口的，则通过 loadFun。
 
