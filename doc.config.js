@@ -76,6 +76,10 @@ module.exports = {
         {
           path: 'van-tag',
           title: 'Tag 标签'
+        },
+        {
+          path: 'van-notice-bar',
+          title: 'NoticeBar 提示条'
         }
       ]
     },
